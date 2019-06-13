@@ -1,0 +1,94 @@
+{% extends "dashboard/base.html" %}
+{% load i18n %}
+{% load materializecss %}
+{% load static %}
+
+{% block title %}
+  {% if translation.pk %}
+    {% trans "Edit" context "translation form page title" %} - {{ translation }}
+  {% else %}
+    {% trans "Add translation" context "translation form page title" %}
+  {% endif %}
+   - {{ block.super }}
+{% endblock %}
+
+{% block body_class %}body-store body-variants{% endblock %}
+
+{% block header_menu %}
+  {% url "dashboard:variant-variant-translation-details" product_pk=variant.product_id variant_pk=variant.pk translation_pk=translation.pk as url %}
+  {% include "dashboard/includes/_back_link.html" with url=url %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumbs breadcrumbs--history">
+    <li>
+      <a href="{% url "dashboard:product-list" %}" class="breadcrumb">
+        {% trans "Products" context "Product form breadcrumbs" %}
+      </a>
+    </li>
+    <li class="back-mobile">
+      <a href="{% url "dashboard:product-list" %}">
+        <svg data-src="{% static "dashboard/images/arrow-left.svg" %}" fill="#fff" width="20px" height="20px" />
+      </a>
+    </li>
+    <li class="hide-on-med-and-down">
+      <a href="{% url "dashboard:product-details" pk=variant.product_id %}" class="breadcrumbs--ellipsed-item">
+        {{ variant.product }}
+      </a>
+    </li>
+    <li class="hide-on-med-and-down">
+      <a href="{% url "dashboard:variant-details" product_pk=variant.product_id variant_pk=variant.pk %}" class="breadcrumbs--ellipsed-item">
+        {{ variant }}
+      </a>
+    </li>
+    <li>
+      <span class="breadcrumbs--ellipsed-item">
+        {{ translation }}
+      </span>
+    </li>
+  </ul>
+{% endblock %}
+
+{% block menu_catalogue_class %} active{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col m12">
+      <div class="card">
+        <form method="post" id="form-translation" enctype="multipart/form-data">
+          <div class="card-content">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col m12">
+                <div class="row">
+                  <b>{{ form.language_code|materializecss }}</b>
+                </div>
+                <div class="row">
+                  {{ form.name|materializecss }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-action right-align">
+            {% if translation.pk %}
+              <a href="{% url "dashboard:variant-translation-details" product_pk=variant.product_id variant_pk=variant.pk translation_pk=translation.pk %}" class="btn-flat waves-effect">
+                {% trans "Cancel" context "Dashboard cancel action" %}
+              </a>
+              <button type="submit" class="btn waves-effect">
+                {% trans "Save" context "Dashboard update action" %}
+              </button>
+            {% else %}
+              <a href="{% url "dashboard:variant-details" pk=variant.pk %}" class="btn-flat waves-effect">
+                {% trans "Cancel" context "Dashboard cancel action" %}
+              </a>
+              <button type="submit" class="btn waves-effect">
+                {% trans "Create" context "Dashboard create action" %}
+              </button>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col s12 m3 help-box"></div>
+  </div>
+{% endblock %}

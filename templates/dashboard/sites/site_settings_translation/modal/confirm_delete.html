@@ -1,0 +1,35 @@
+{% extends "dashboard/base_modal.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block form_class %}{% endblock %}
+
+{% block action_url %}
+{% url "dashboard:site-settings-translation-delete" pk=site_settings.pk translation_pk=translation.pk %}
+{% endblock %}
+
+{% block title %}
+{% blocktrans context "Dashboard confirmation modal" %}
+  Remove translation {{ translation }}
+{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+  <div class="col s12">
+    <p>
+      {% blocktrans context "Dashboard confirmation modal" %}
+        Are you sure you want to remove translation <strong>{{ translation }}</strong> of site-settings {{ site_settings }}?
+      {% endblocktrans %}
+    </p>
+    {% if is_only_translation %}
+      <p>
+      {% trans "This is the only translation of this site-settings. If you remove it, the site-settings will become unavailable." context "Dashboard confirmation modal" %}
+      </p>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+{% block primary_action %}
+{% trans "Remove" context "Dashboard delete action" %}
+{% endblock %}

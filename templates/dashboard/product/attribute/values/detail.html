@@ -1,0 +1,103 @@
+{% extends 'dashboard/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+  {{ attribute }} - {{ block.super }}
+{% endblock %}
+
+{% block body_class %}body-attribute{% endblock %}
+
+{% block menu_attributes_class %}active{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumbs breadcrumbs--history">
+    <li>
+      <a href="{% url 'dashboard:attributes' %}" class="breadcrumbs--ellipsed-item">
+      {% trans "Attributes" context "Attribute detail breadcrumbs" %}
+      </a>
+    </li>
+    <li class="back-mobile">
+      <a href="{% url 'dashboard:attributes' %}">
+        <svg data-src="{% static "dashboard/images/arrow-left.svg" %}" fill="#fff" width="20px" height="20px" />
+      </a>
+    </li>
+    <li>
+      <span class="breadcrumbs--ellipsed-item">
+        {{ attribute }}
+      </span>
+    </li>
+  <li>
+      <span class="breadcrumbs--ellipsed-item">
+        {{ value }}
+      </span>
+    </li>
+  </ul>
+{% endblock %}
+
+{% block menu_catalogue_class %} active{% endblock %}
+
+{% block content %}
+    <div class="row">
+       <div class="col m12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ value }}
+            </span>
+
+
+          </div>
+          <div class="card">
+        <div class="card-content">
+{#          <div style="overflow: auto; width: 100%; display: inline-block">#}
+             <span class="card-title">{% trans "Translations" %}</span>
+          <div class="data-table-header-action">
+            <a href="{% url 'dashboard:attributevalue-translation-add' attvalue_pk=value.pk %}" class="btn-data-table btn-flat waves-effect">
+              {% trans "Add" %}
+            </a>
+          </div>
+          <div>
+          <table class="bordered highlight responsive data-table">
+              <thead>
+                <tr>
+                  <th>{% trans "Language Code" %}</th>
+                  <th>{% trans "Name" %}</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for translation in translations %}
+                  <tr>
+                    <td>{{ translation.language_code }}</td>
+                    <td>{{ translation.name }}</td>
+                    <td><a href="{% url 'dashboard:attributevalue-translation-edit' attvalue_pk=value.pk translation_pk=translation.pk %}" class="btn-flat waves-effect">{% trans "Edit" %}</a></td>
+                    <td><a href="{% url 'dashboard:attributevalue-translation-delete' attvalue_pk=value.pk translation_pk=translation.pk %}" class="btn-flat waves-effect">{% trans 'Remove' context 'Attribute value edit action' %}</a></td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="5">{% trans "No translations found" context "Dashboard category details page" %}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        <div class="card-action">
+           <a href="{% url 'dashboard:attribute-value-update' attribute_pk=attribute.pk value_pk=value.pk %}" class="btn-flat waves-effect">
+              {% trans 'Edit' context 'Attribute value edit action' %}
+            </a>
+
+            <a class="btn-flat waves-effect modal-trigger-custom" href="#base-modal"
+              data-href="{% url 'dashboard:attribute-value-delete' attribute_pk=attribute.pk value_pk=value.pk %}">
+                {% trans 'Remove' context 'Attribute value edit action' %}
+            </a>
+        </div>
+      </div>
+
+        </div>
+
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "dashboard/base_modal.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block form_class %}{% endblock %}
+
+{% block action_url %}
+{% url "dashboard:translation-delete" product_pk=product.pk translation_pk=translation.pk %}
+{% endblock %}
+
+{% block title %}
+{% blocktrans context "Dashboard confirmation modal" %}
+  Remove translation {{ translation }}
+{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+  <div class="col s12">
+    <p>
+      {% blocktrans context "Dashboard confirmation modal" %}
+        Are you sure you want to remove translation <strong>{{ translation }}</strong> of product {{ product }}?
+      {% endblocktrans %}
+    </p>
+    {% if is_only_translation %}
+      <p>
+      {% trans "This is the only translation of this product. If you remove it, the product will become unavailable." context "Dashboard confirmation modal" %}
+      </p>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+{% block primary_action %}
+{% trans "Remove" context "Dashboard delete action" %}
+{% endblock %}

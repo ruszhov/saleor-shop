@@ -1,0 +1,108 @@
+{% extends "dashboard/base.html" %}
+{% load i18n %}
+{% load materializecss %}
+{% load static %}
+
+{% block title %}
+  {{ translation }} - {{ block.super }}
+{% endblock %}
+
+{% block body_class %}body-categories{% endblock %}
+
+{% block menu_categories_class %}active{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumbs breadcrumbs--history">
+    <li>
+      <a href="{% url "dashboard:category-list" %}" class="breadcrumb">
+        {% trans "categorys" context "Dashboard categorys list" %}
+      </a>
+    </li>
+    <li class="back-mobile">
+      <a href="{% url "dashboard:category-details" pk=category.pk %}">
+        <svg data-src="{% static "dashboard/images/chevron-left.svg" %}" />
+      </a>
+    </li>
+    <li>
+      <a href="{% url "dashboard:category-details" pk=category.pk %}" class="breadcrumbs--ellipsed-item">
+        {{ category }}
+      </a>
+    </li>
+    {% if translation.pk %}
+      <li>
+        <a href="{% url "dashboard:category-translation-details" pk=category.pk translation_pk=translation.pk %}" class="breadcrumbs--ellipsed-item">
+          {{ translation }}
+        </a>
+      </li>
+      <li>
+      <span class="breadcrumbs--ellipsed-item">
+        {% trans "Edit" context "translation form breadcrumbs" %}
+      </span>
+    </li>
+    {% else %}
+      <li>
+        <span class="hide-on-med-and-down">
+          {% trans "Add translation" context "translation form breadcrumbs" %}
+        </span>
+        <span class="hide-on-large-only breadcrumbs--ellipsed-item">
+          {% blocktrans trimmed context "translation form breadcrumbs" %}
+            Add translation for {{ category }}
+          {% endblocktrans %}
+        </span>
+      </li>
+    {% endif %}
+  </ul>
+{% endblock %}
+
+{% block menu_catalogue_class %} active{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col m12">
+      <div class="card">
+        <form method="post" id="form-translation" enctype="multipart/form-data">
+          <div class="card-content">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col m12">
+                <div class="row">
+                  <b>{{ form.language_code|materializecss }}</b>
+                </div>
+                <div class="row">
+                  {{ form.name|materializecss }}
+                </div>
+                <div class="row">
+                  {{ form.description|materializecss }}
+                </div>
+                <div class="row">
+                  {{ form.seo_title|materializecss }}
+                </div>
+                <div class="row">
+                  {{ form.seo_description|materializecss }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-action right-align">
+            {% if translation.pk %}
+              <a href="{% url "dashboard:category-details" pk=category.pk %}" class="btn-flat waves-effect">
+                {% trans "Cancel" context "Dashboard cancel action" %}
+              </a>
+              <button type="submit" class="btn waves-effect">
+                {% trans "Save" context "Dashboard update action" %}
+              </button>
+            {% else %}
+              <a href="{% url "dashboard:category-details" pk=category.pk %}" class="btn-flat waves-effect">
+                {% trans "Cancel" context "Dashboard cancel action" %}
+              </a>
+              <button type="submit" class="btn waves-effect">
+                {% trans "Create" context "Dashboard create action" %}
+              </button>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col s12 m3 help-box"></div>
+  </div>
+{% endblock %}
