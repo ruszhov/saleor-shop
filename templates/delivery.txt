@@ -1,0 +1,77 @@
+<h1>Оплата і доставка</h1>
+<p><strong>Оплата.</strong></p>
+<p>Ми працюємо на умовах часткової або повної передоплати.</p>
+<ul>
+	<li>Можливість виставити рахунок фактуру.</li>
+	<li>Можливість оплатити за товар через ПРИВАТ 24 на рахунок компанії.</li>
+</ul>
+<p><strong>Доставка і отримання товару.</strong></p>
+<p>Повідомляємо вас, що термін виготовлення та очікування товару, що залежить від його наявності на складі, може коливатися від 3 до 14 робочих днів.</p>
+<p>Варіанти отримання продукції:</p>
+<ul>
+	<li>Самовивіз з нашого складу (м. Львів);</li>
+	<li>Відправка компанією НОВА ПОШТА по Україні;</li>
+	<li>Адресна доставка кур’єром (в межах м.Львів, при замовленні на суму від 500 грн)</li>
+</ul>
+<p>За замовчуванням оплату послуг перевізників оплачує Замовник (якщо це не обумовлено окремо і не включено у вартість). Страхова вартість за замовчуванням виставляється мінімальною (щоб мінімізувати витрати на перевезення), але може бути змінена за бажанням Замовника.</p>
+<p>Можливість відправки іншим видом пошти просимо уточняти.</p>
+
+
+
+<h1>Payment and delivery</h1>
+<p><strong>Payment.</strong></p>
+<p>We work on partial or full prepayment terms.</p>
+<ul>
+	<li>Ability to invoice invoice.</li>
+	<li>Ability to pay for goods through PRIVAT 24 to the company's account.</li>
+</ul>
+<p><strong>Delivery and receipt of goods.</strong></p>
+<p>We are writing to inform you that the time of production and the expectation of the product, depending on its availability in stock, can vary from 3 to 14 business days.</p>
+<p>Options for receiving products:</p>
+<ul>
+	<li>Self-check from our warehouse (Lviv city);</li>
+	<li>Sending by the company "НОВА ПОШТА" in Ukraine;</li>
+	<li>Targeted delivery by courier (within Lviv, when ordering for a sum of UAH 500)</li>
+</ul>
+<p>By default, the Customer pays the payment for carriers' services (unless specified separately and not included in the price). By default, the insurance cost is minimal (to minimize transportation costs), but may be changed at the request of the Client.</p>
+<p>Please send us an opportunity to send a different kind of mail.</p>
+
+
+
+<h1>Оплата и доставка</h1>
+<p><strong>Оплата.</strong></p>
+<p>Мы работаем на условиях частичной или полной предоплаты.</p>
+<ul>
+	<li>Возможность выставить счет фактуру.</li>
+	<li>Возможность оплатить товар через ПРИВАТ 24 на счет компании.</li>
+</ul>
+<p><strong>Доставка и получение товара.</strong></p>
+<p>Сообщаем вам, что срок изготовления и ожидания товара зависит от его наличия на складе, может колебаться от 3 до 14 рабочих дней.</p>
+<p>Варианты получения продукции:</p>
+<ul>
+	<li>Самовывоз с нашего склада (г. Львов)</li>
+	<li>Отправка компанией НОВАЯ ПОЧТА по Украине;</li>
+	<li>Адресная доставка курьером (в пределах Львов, при заказе на сумму от 500 грн)</li>
+</ul>
+<p>По умолчанию оплату услуг перевозчиков оплачивает Заказчик (если это не оговорено отдельно и не включен в стоимость). Страховая стоимость по умолчанию выставляется минимальной (чтобы минимизировать расходы на перевозку), но может быть изменена по желанию Заказчика.</p>
+<p>Возможность отправки другим видом почты просьба уточнять.</p>
+
+
+
+<h1>Płatność i dostawa</h1>
+<p><strong>Płatność.</strong></p>
+<p>Pracujemy na warunkach częściowej lub pełnej przedpłaty.</p>
+<ul>
+	<li>Możliwość fakturowania faktury.</li>
+	<li>Możliwość zapłaty za towary za pośrednictwem PRIVAT 24 na konto firmy.</li>
+</ul>
+<p><strong>Dostawa i odbiór towarów.</strong></p>
+<p>Piszemy, aby poinformować, że czas produkcji i oczekiwanie na produkt, w zależności od jego dostępności w magazynie, może się wahać od 3 do 14 dni roboczych.</p>
+<p>Opcje odbioru produktów:</p>
+<ul>
+	<li>Samokontrola z naszego magazynu (miasto Lwów);</li>
+	<li>Wysłanie przez firmę "НОВА ПОШТА" na Ukrainie;</li>
+	<li>Dostawa celowana kurierem (na terenie Lwowa przy zamawianiu kwoty 500 UAH)</li>
+</ul>
+<p>Domyślnie Klient płaci opłatę za usługi przewoźnika (o ile nie podano osobno i nie jest wliczony w cenę). Domyślnie koszt ubezpieczenia jest minimalny (aby zminimalizować koszty transportu), ale może zostać zmieniony na wniosek Klienta.</p>
+<p>Prześlij nam możliwość wysłania innego rodzaju poczty.</p>
