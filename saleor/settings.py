@@ -626,3 +626,9 @@ GRAPHENE = {
     'RELAY_CONNECTION_ENFORCE_FIRST_OR_LAST': True,
     'RELAY_CONNECTION_MAX_LIMIT': 100
 }
+
+# try:
+#     from .settings_prod import *
+# except:
+#     pass
+
