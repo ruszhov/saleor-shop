@@ -2,7 +2,7 @@
 Import json data from JSON file to Datababse
 """
 import json
-from ....product.models import Category, Product, ProductTranslation
+from ....product.models import Category, Product, ProductTranslation, ProductVariant, ProductVariantTranslation
 from ....menu.models import MenuItem, MenuItemTranslation
 from ....product.models import CategoryTranslation
 from django.core.management.base import BaseCommand
@@ -330,13 +330,156 @@ class Command(BaseCommand):
         #                           Product  Translation                      #
         #######################################################################
 
-        products = Product.objects.all()
-        for product in products:
+        # products = Product.objects.all()
+        # for product in products:
+
+        #     ###########      Polska   ##############################
+        #     language_code = 'pl'
+        #     product_id = product.id
+        #     pl_product_update = {
+        #         # 'seo_title': pl_seo_title,
+        #         # 'seo_description': pl_seo_description,
+        #         # 'language_code': language_code,
+        #         # 'name': pl_name,
+        #         # 'description': pl_description,
+        #         # 'product_id': product_id,
+        #         # 'description_json': pl_out_json
+        #     }
+        #     try:
+        #         product = ProductTranslation.objects.get(product_id=product_id, language_code='pl')
+        #         for key, value in pl_product_update.items():
+        #             setattr(product, key, value)
+        #         product.save()
+        #         display_format = "\nTranslation for product, {}, has been edited."
+        #         # print(display_format.format(product))
+        #     except ProductTranslation.DoesNotExist:
+        #         try:
+        #             pl_name = translator.translate(product.name, dest='pl').text
+        #             pl_description = translator.translate(product.description, dest='pl').text[:600]
+        #             pl_raw_json = json.dumps({"blocks": [
+        #                 {"key": "", "data": {}, "text": pl_description, "type": "unstyled", "depth": 0,
+        #                  "entityRanges": [],
+        #                  "inlineStyleRanges": []}], "entityMap": {}})
+        #             pl_out_json = json.loads(pl_raw_json)
+        #             pl_product_create = {
+        #                 'seo_title': pl_name,
+        #                 'seo_description': pl_description,
+        #                 'language_code': language_code,
+        #                 'name': pl_name,
+        #                 'description': pl_description,
+        #                 'product_id': product_id,
+        #                 'description_json': pl_out_json
+        #             }
+        #             pl_product_create.update(pl_product_update)
+        #             product = ProductTranslation(**pl_product_create)
+        #             product.save()
+        #             display_format = "\nTranslation for product, {}, has been created."
+        #             print(display_format.format(product))
+
+        #         except ValueError:  # includes simplejson.decoder.JSONDecodeError
+        #             print('Decoding JSON has failed PL', product.id)
+
+
+        #     # # ###########      Ukrainian   ##############################
+        #     language_code = 'uk'
+        #     uk_product_update = {
+        #         # 'seo_title': uk_seo_title,
+        #         # 'seo_description': uk_seo_description,
+        #         # 'language_code': language_code,
+        #         # 'name': uk_name,
+        #         # 'description': uk_description,
+        #         # 'product_id': product_id,
+        #         # 'description_json': uk_out_json
+        #     }
+        #     try:
+        #         product = ProductTranslation.objects.get(product_id=product_id, language_code='uk')
+        #         for key, value in uk_product_update.items():
+        #             setattr(product, key, value)
+        #         product.save()
+        #         disukay_format = "\nTranslation for product, {}, has been edited."
+        #         # print(disukay_format.format(product))
+        #     except ProductTranslation.DoesNotExist:
+        #         try:
+        #             uk_name = translator.translate(product.name, dest='uk').text
+        #             uk_description = translator.translate(product.description, dest='uk').text[:600]
+        #             uk_raw_json = json.dumps({"blocks": [
+        #                 {"key": "", "data": {}, "text": uk_description, "type": "unstyled", "depth": 0,
+        #                  "entityRanges": [],
+        #                  "inlineStyleRanges": []}], "entityMap": {}})
+        #             uk_out_json = json.loads(uk_raw_json)
+        #             uk_product_create = {
+        #                 'seo_title': uk_name,
+        #                 'seo_description': uk_description,
+        #                 'language_code': language_code,
+        #                 'name': uk_name,
+        #                 'description': uk_description,
+        #                 'product_id': product_id,
+        #                 'description_json': uk_out_json
+        #             }
+        #             uk_product_create.update(uk_product_update)
+        #             product = ProductTranslation(**uk_product_create)
+        #             product.save()
+        #             disukay_format = "\nTranslation for product, {}, has been created."
+        #             print(disukay_format.format(product))
+        #         except ValueError:  # includes simplejson.decoder.JSONDecodeError
+        #             print('Decoding JSON has failed UK', product.id)
+
+        #     ############      Russian   ##############################
+        #     language_code = 'ru'
+        #     ru_product_update = {
+        #         # 'seo_title': ru_name,
+        #         # 'seo_description': ru_description,
+        #         # 'language_code': language_code,
+        #         # 'name': ru_name,
+        #         # 'description': ru_description,
+        #         # 'product_id': product_id,
+        #         # 'description_json': ru_out_json
+        #     }
+        #     try:
+        #         product = ProductTranslation.objects.get(product_id=product_id, language_code='ru')
+        #         for key, value in ru_product_update.items():
+        #             setattr(product, key, value)
+        #         product.save()
+        #         disruay_format = "\nTranslation for product, {}, has been edited."
+        #         # print(disruay_format.format(product))
+        #     except ProductTranslation.DoesNotExist:
+        #         try:
+        #             ru_name = translator.translate(product.name, dest='ru').text
+        #             ru_description = translator.translate(product.description, dest='ru').text[:600]
+        #             ru_raw_json = json.dumps({"blocks": [
+        #                 {"key": "", "data": {}, "text": ru_description, "type": "unstyled", "depth": 0,
+        #                  "entityRanges": [],
+        #                  "inlineStyleRanges": []}], "entityMap": {}})
+        #             ru_out_json = json.loads(ru_raw_json)
+        #             ru_product_create = {
+        #                 'seo_title': ru_name,
+        #                 'seo_description': ru_description,
+        #                 'language_code': language_code,
+        #                 'name': ru_name,
+        #                 'description': ru_description,
+        #                 'product_id': product_id,
+        #                 'description_json': ru_out_json
+        #             }
+        #             ru_product_create.update(ru_product_update)
+        #             product = ProductTranslation(**ru_product_create)
+        #             product.save()
+        #             disruay_format = "\nTranslation for product, {}, has been created."
+        #             print(disruay_format.format(product))
+        #         except ValueError:  # includes simplejson.decoder.JSONDecodeError
+        #             print('Decoding JSON has failed RU', product.id)
+
+
+        #######################################################################
+        #                    ProductVariant  Translation                      #
+        #######################################################################
+
+        variants = ProductVariant.objects.all()
+        for variant in variants:
 
             ###########      Polska   ##############################
             language_code = 'pl'
-            product_id = product.id
-            pl_product_update = {
+            variant_id = variant.id
+            pl_variant_update = {
                 # 'seo_title': pl_seo_title,
                 # 'seo_description': pl_seo_description,
                 # 'language_code': language_code,
@@ -346,127 +489,102 @@ class Command(BaseCommand):
                 # 'description_json': pl_out_json
             }
             try:
-                product = ProductTranslation.objects.get(product_id=product_id, language_code='pl')
-                for key, value in pl_product_update.items():
-                    setattr(product, key, value)
-                product.save()
-                display_format = "\nTranslation for product, {}, has been edited."
+                variant = ProductVariantTranslation.objects.get(product_variant_id=variant_id, language_code='pl')
+                for key, value in pl_variant_update.items():
+                    setattr(variant, key, value)
+                variant.save()
+                display_format = "\nPL translation for variant, {}, has been edited."
                 # print(display_format.format(product))
-            except ProductTranslation.DoesNotExist:
+            except ProductVariantTranslation.DoesNotExist:
                 try:
-                    pl_name = translator.translate(product.name, dest='pl').text
-                    pl_description = translator.translate(product.description, dest='pl').text[:600]
-                    pl_raw_json = json.dumps({"blocks": [
-                        {"key": "", "data": {}, "text": pl_description, "type": "unstyled", "depth": 0,
-                         "entityRanges": [],
-                         "inlineStyleRanges": []}], "entityMap": {}})
-                    pl_out_json = json.loads(pl_raw_json)
-                    pl_product_create = {
-                        'seo_title': pl_name,
-                        'seo_description': pl_description,
+                    pl_name = translator.translate(variant.name, dest=language_code).text
+                    pl_variant_create = {
                         'language_code': language_code,
                         'name': pl_name,
-                        'description': pl_description,
-                        'product_id': product_id,
-                        'description_json': pl_out_json
+                        'product_variant_id': variant_id,
                     }
-                    pl_product_create.update(pl_product_update)
-                    product = ProductTranslation(**pl_product_create)
-                    product.save()
-                    display_format = "\nTranslation for product, {}, has been created."
-                    print(display_format.format(product))
+                    pl_variant_create.update(pl_variant_update)
+                    variant = ProductVariantTranslation(**pl_variant_create)
+                    variant.save()
+                    display_format = "\nPL translation for variant, {}, has been created."
+                    print(display_format.format(variant))
 
                 except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                    print('Decoding JSON has failed PL', product.id)
+                    print('Decoding JSON has failed PL', variant.id)
 
 
-            # # ###########      Ukrainian   ##############################
+            ############      Ukrainian   ##############################
             language_code = 'uk'
-            uk_product_update = {
-                # 'seo_title': uk_seo_title,
-                # 'seo_description': uk_seo_description,
+            variant_id = variant.id
+            uk_variant_update = {
+                # 'seo_title': pl_seo_title,
+                # 'seo_description': pl_seo_description,
                 # 'language_code': language_code,
-                # 'name': uk_name,
-                # 'description': uk_description,
+                # 'name': pl_name,
+                # 'description': pl_description,
                 # 'product_id': product_id,
-                # 'description_json': uk_out_json
+                # 'description_json': pl_out_json
             }
             try:
-                product = ProductTranslation.objects.get(product_id=product_id, language_code='uk')
-                for key, value in uk_product_update.items():
-                    setattr(product, key, value)
-                product.save()
-                disukay_format = "\nTranslation for product, {}, has been edited."
-                # print(disukay_format.format(product))
-            except ProductTranslation.DoesNotExist:
+                variant = ProductVariantTranslation.objects.get(product_variant_id=variant_id, language_code=language_code)
+                for key, value in uk_variant_update.items():
+                    setattr(variant, key, value)
+                variant.save()
+                display_format = "\nUK translation for variant, {}, has been edited."
+                # print(display_format.format(product))
+            except ProductVariantTranslation.DoesNotExist:
                 try:
-                    uk_name = translator.translate(product.name, dest='uk').text
-                    uk_description = translator.translate(product.description, dest='uk').text[:600]
-                    uk_raw_json = json.dumps({"blocks": [
-                        {"key": "", "data": {}, "text": uk_description, "type": "unstyled", "depth": 0,
-                         "entityRanges": [],
-                         "inlineStyleRanges": []}], "entityMap": {}})
-                    uk_out_json = json.loads(uk_raw_json)
-                    uk_product_create = {
-                        'seo_title': uk_name,
-                        'seo_description': uk_description,
+                    uk_name = translator.translate(variant.name, dest=language_code).text
+                    uk_variant_create = {
                         'language_code': language_code,
                         'name': uk_name,
-                        'description': uk_description,
-                        'product_id': product_id,
-                        'description_json': uk_out_json
+                        'product_variant_id': variant_id,
                     }
-                    uk_product_create.update(uk_product_update)
-                    product = ProductTranslation(**uk_product_create)
-                    product.save()
-                    disukay_format = "\nTranslation for product, {}, has been created."
-                    print(disukay_format.format(product))
+                    uk_variant_create.update(uk_variant_update)
+                    variant = ProductVariantTranslation(**uk_variant_create)
+                    variant.save()
+                    display_format = "\nUK translation for variant, {}, has been created."
+                    print(display_format.format(variant))
+
                 except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                    print('Decoding JSON has failed UK', product.id)
+                    print('Decoding JSON has failed UK', variant.id)
+
 
             ############      Russian   ##############################
             language_code = 'ru'
-            ru_product_update = {
-                # 'seo_title': ru_name,
-                # 'seo_description': ru_description,
+            variant_id = variant.id
+            ru_variant_update = {
+                # 'seo_title': pl_seo_title,
+                # 'seo_description': pl_seo_description,
                 # 'language_code': language_code,
-                # 'name': ru_name,
-                # 'description': ru_description,
+                # 'name': pl_name,
+                # 'description': pl_description,
                 # 'product_id': product_id,
-                # 'description_json': ru_out_json
+                # 'description_json': pl_out_json
             }
             try:
-                product = ProductTranslation.objects.get(product_id=product_id, language_code='ru')
-                for key, value in ru_product_update.items():
-                    setattr(product, key, value)
-                product.save()
-                disruay_format = "\nTranslation for product, {}, has been edited."
-                # print(disruay_format.format(product))
-            except ProductTranslation.DoesNotExist:
+                variant = ProductVariantTranslation.objects.get(product_variant_id=variant_id, language_code=language_code)
+                for key, value in ru_variant_update.items():
+                    setattr(variant, key, value)
+                variant.save()
+                display_format = "\nRU translation for variant, {}, has been edited."
+                # print(display_format.format(product))
+            except ProductVariantTranslation.DoesNotExist:
                 try:
-                    ru_name = translator.translate(product.name, dest='ru').text
-                    ru_description = translator.translate(product.description, dest='ru').text[:600]
-                    ru_raw_json = json.dumps({"blocks": [
-                        {"key": "", "data": {}, "text": ru_description, "type": "unstyled", "depth": 0,
-                         "entityRanges": [],
-                         "inlineStyleRanges": []}], "entityMap": {}})
-                    ru_out_json = json.loads(ru_raw_json)
-                    ru_product_create = {
-                        'seo_title': ru_name,
-                        'seo_description': ru_description,
+                    ru_name = translator.translate(variant.name, dest=language_code).text
+                    ru_variant_create = {
                         'language_code': language_code,
                         'name': ru_name,
-                        'description': ru_description,
-                        'product_id': product_id,
-                        'description_json': ru_out_json
+                        'product_variant_id': variant_id,
                     }
-                    ru_product_create.update(ru_product_update)
-                    product = ProductTranslation(**ru_product_create)
-                    product.save()
-                    disruay_format = "\nTranslation for product, {}, has been created."
-                    print(disruay_format.format(product))
+                    ru_variant_create.update(ru_variant_update)
+                    variant = ProductVariantTranslation(**ru_variant_create)
+                    variant.save()
+                    display_format = "\nRU translation for variant, {}, has been created."
+                    print(display_format.format(variant))
+
                 except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                    print('Decoding JSON has failed RU', product.id)
+                    print('Decoding JSON has failed RU', variant.id)
             
 
         # with open(os.path.join(data_folder, "categories_pl.json"), encoding='utf-8') as data_file:

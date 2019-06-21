@@ -56,9 +56,9 @@
             {% trans "Payment details" context "Order details link text" %}
           </a>
         {% else %}
-          <a href="{% url "order:payment" token=order.token %}" class="btn btn-primary">
+          <!-- <a href="{% url "order:payment" token=order.token %}" class="btn btn-primary">
             {% trans "Pay for order" context "Order details primary action" %}
-          </a>
+          </a> -->
         {% endif %}
       {% endif %}
       {% include "order/_ordered_items_table.html" %}

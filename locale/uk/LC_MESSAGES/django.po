@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-18 07:39-0500\n"
-"PO-Revision-Date: 2019-06-04 16:48+0300\n"
+"PO-Revision-Date: 2019-06-21 09:15+0300\n"
 "Last-Translator: Roman Storozhuk <roman.storozhuk@gmail.com>, 2019\n"
 "Language-Team: Ukrainian (https://www.transifex.com/mirumee/teams/34782/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -1379,7 +1379,7 @@ msgstr "Ви впевнені? "
 #: templates/account/account_delete_prompt.html:16
 msgctxt "Message displayed to the user requesting for his account deletetion"
 msgid "Sorry to see you go!"
-msgstr ""
+msgstr "Прикро, що ви йдете від нас!"
 
 #: templates/account/account_delete_prompt.html:22
 msgctxt "Message displayed to the user requesting for his account deletetion"
@@ -6124,11 +6124,17 @@ msgid ""
 "\n"
 "Please note that this action is permanent and cannot be reversed.\n"
 msgstr ""
+"\n"
+"Ви отримуєте це повідомлення електронної пошти, оскільки ви чи хтось інший запитав про "
+"видалення облікового запису користувача на %(domain)s.\n"
+"Натисніть на посилання внизу щоб видалити акаунт.\n"
+"\n"
+"Зауважте, що ця дія скасуванню не підлягає.\n"
 
 #: templates/templated_email/account/password_reset.email:4
 msgctxt "Password reset e-mail subject"
 msgid "Password reset e-mail"
-msgstr ""
+msgstr "Скидання паролю"
 
 #: templates/templated_email/account/password_reset.email:9
 #, python-format
@@ -6140,12 +6146,18 @@ msgid ""
 "It can be safely ignored if you did not request a password reset. Click the link below to "
 "reset your password.\n"
 msgstr ""
+"\n"
+"Ви отримали це повідомлення на електронну, оскільки ви чи хтось інший запитав про зміну "
+"паролю облікового запису користувача на %(domain)s.\n"
+"Якщо Ви не бажаєте змінювати пароль - ігноруйте цей лист. Для зміни паролю натисніь на "
+"посилання нижче.\n"
+"\n"
 
 #: templates/templated_email/dashboard/customer/set_password.email:2
 #, python-format
 msgctxt "Set password for customer e-mail title"
 msgid "Hello from %(site_name)s!"
-msgstr ""
+msgstr "Привіт від %(site_name)s!"
 
 #: templates/templated_email/dashboard/customer/set_password.email:6
 #, python-format
@@ -6156,11 +6168,15 @@ msgid ""
 "at %(domain)s.\n"
 "Click the link below to reset your password.\n"
 msgstr ""
+"\n"
+"Ви отримуєте це повідомлення електронної пошти, оскільки вам потрібно встановити пароль "
+"для облікового запису клієнта на %(domain)s.\n"
+"Натисніть посилання нижче, щоб скинути пароль.\n"
 
 #: templates/templated_email/dashboard/staff/promote_customer.email:2
 #, python-format
 msgid "Hello from %(site_name)s!"
-msgstr ""
+msgstr "Привіт від %(site_name)s!"
 
 #: templates/templated_email/dashboard/staff/promote_customer.email:6
 #, python-format
@@ -6169,12 +6185,15 @@ msgid ""
 "\n"
 "You're receiving this e-mail because you have been promoted to staff member at %(domain)s."
 msgstr ""
+"\n"
+"Ви отримуєте це повідомлення електронної пошти, оскільки ви отримали посаду співробітника "
+"на %(domain)s."
 
 #: templates/templated_email/dashboard/staff/set_password.email:2
 #, python-format
 msgctxt "Set password for staff member e-mail title"
 msgid "Hello from %(site_name)s!"
-msgstr ""
+msgstr "Hello from %(site_name)s!"
 
 #: templates/templated_email/dashboard/staff/set_password.email:6
 #, python-format
@@ -6185,6 +6204,9 @@ msgid ""
 "account at %(domain)s.\n"
 "Click the link below to reset your password.\n"
 msgstr ""
+"\n"
+"Ви отримали цього листа тому що Ви задали пароль для Вашого співробітника на %(domain)s.\n"
+"Натисніть на посилання внизу для скидання паролю.\n"
 
 #: templates/templated_email/order/confirm_fulfillment.email:4
 #, python-format
@@ -6220,6 +6242,10 @@ msgid ""
 "details please visit:\n"
 "%(order_details_url)s"
 msgstr ""
+"\n"
+"Дякуємо за ваше замовлення. Нижче наведено список замовлених товарів. Щоб переглянути "
+"реквізити платежу, відвідайте:\n"
+"%(order_details_url)s"
 
 #: templates/templated_email/order/confirm_order.email:17
 msgctxt "Order confirmation e-mail table header"
@@ -6301,6 +6327,9 @@ msgid ""
 "Your shipping status has been updated. Below is the list of ordered products that have "
 "been updated with new tracking number.\n"
 msgstr ""
+"\n"
+"Статус замовлення оновлено. Нижче наведено список замовлених продуктів, які були оновлені "
+"новим номером для відстеження.\n"
 
 #: templates/templated_email/order/update_fulfillment.email:15
 #, python-format
@@ -6312,14 +6341,14 @@ msgstr ""
 #: templates/templated_email/source/shared/footer.mjml:4
 msgctxt "Base email text"
 msgid "This is an automatically generated e-mail, please do not reply."
-msgstr ""
+msgstr "Цей лист згенерований автоматично, не потрібно відповідати на нього."
 
 #: templates/templated_email/shared/_footer.email:5
 #: templates/templated_email/source/shared/footer.mjml:13
 #, python-format
 msgctxt "Base email footer"
 msgid "Sincerely, %(site_name)s"
-msgstr ""
+msgstr "З найкращими побажаннями, %(site_name)s"
 
 #: templates/templated_email/shared/_header.email:2
 #: templates/templated_email/source/account_delete.mjml:13
@@ -6333,7 +6362,7 @@ msgstr ""
 #: templates/templated_email/source/update_fulfillment.mjml:13
 msgctxt "Standard e-mail greeting"
 msgid "Hi!"
-msgstr ""
+msgstr "Привіт!"
 
 #: templates/templated_email/source/account_delete.mjml:16
 #, python-format
@@ -6343,11 +6372,14 @@ msgid ""
 "user account at %(domain)s.<br/> Click the link below to delete your account. Please note "
 "that this action is permanent and cannot be reversed."
 msgstr ""
+"Ви отримали цього листа тому що Ви чи хтось інший запросив видалення Вашого акаунта з "
+"%(domain)s.<br/> Натисніть на посилання внизу для того щоб видалити акаунт. Ця дія "
+"скасуванню не підлягає."
 
 #: templates/templated_email/source/confirm_fulfillment.mjml:16
 msgctxt "Fulfillment confirmation email text"
 msgid "Thank you for your order. Below is the list of shipped products."
-msgstr ""
+msgstr "Дякуємо за Ваше замовлення. Нижче наведено список замовлених товарів."
 
 #: templates/templated_email/source/confirm_order.mjml:17
 #, python-format
@@ -6356,6 +6388,9 @@ msgid ""
 "Thank you for your order. Below is the list of ordered products. To see your payment "
 "details please visit: <a href=\"%(order_details_url)s\">%(order_details_url)s</a>"
 msgstr ""
+"Дякуємо за Ваше замовлення. Нижче наведено список замовлених Вами товарів. Щоб "
+"переглянути деталі замовлення, перейдіть за посиланням: <a href=\"%(order_details_url)s\">"
+"%(order_details_url)s</a>"
 
 #: templates/templated_email/source/confirm_payment.mjml:16
 #, python-format
@@ -6364,6 +6399,8 @@ msgid ""
 "Thank you for your payment. To see your payment details please visit: <a href="
 "\"%(order_details_url)s\">%(order_details_url)s</a>"
 msgstr ""
+"Дякуємо за оплату. Для перегляду деталей перейдіть за посиланням: <a href="
+"\"%(order_details_url)s\">%(order_details_url)s</a>"
 
 #: templates/templated_email/source/partials/_order_lines.mjml:11
 msgctxt "E-mail order lines summary table"
@@ -6383,7 +6420,7 @@ msgstr "Податки (включені)"
 #: templates/templated_email/source/partials/_order_lines.mjml:30
 msgctxt "E-mail order lines summary table"
 msgid "Taxes"
-msgstr ""
+msgstr "Податок"
 
 #: templates/templated_email/source/partials/_order_lines.mjml:40
 msgctxt "E-mail order lines summary table"
@@ -6408,7 +6445,7 @@ msgstr "Кількість"
 #: templates/templated_email/source/partials/_order_lines.mjml:60
 msgctxt "Unit price of a product"
 msgid "Per unit"
-msgstr ""
+msgstr "Кількість"
 
 #: templates/templated_email/source/partials/_order_lines.mjml:61
 msgctxt "Ordered item subtotal (unit price * quantity)"
@@ -6423,6 +6460,9 @@ msgid ""
 "your user account at %(domain)s.<br/> It can be safely ignored if you did not request a "
 "password reset. Click the link below to reset your password."
 msgstr ""
+"Ви отримали цього листа тому що Ви чи хтось інший подав заявку на відновлення паролю "
+"%(domain)s.<br/> Якщо Ви не подавали заявки - ігноруйте цей лист. Натисніть на посилання "
+"внизу для скидання паролю."
 
 #: templates/templated_email/source/promote_customer.mjml:16
 #, python-format
@@ -6432,6 +6472,8 @@ msgid ""
 "<br/> To access dashboard please visit: <a href=\"%(dashboard_url)s\">%(dashboard_url)s</"
 "a>"
 msgstr ""
+"Ви отримали цього листа тому що Ви отримали статус персонал на %(domain)s.<br/> Для "
+"достопу в адмін панель: <a href=\"%(dashboard_url)s\">%(dashboard_url)s</a>"
 
 #: templates/templated_email/source/set_customer_password.mjml:16
 #, python-format
@@ -6440,6 +6482,9 @@ msgid ""
 "You're receiving this e-mail because you have to set password for your customer account "
 "at %(domain)s.<br/> Click the link below to set up your password."
 msgstr ""
+"Ви отримали це повідомлення на електронну, тому що потрібно ввести пароль для облікового "
+"запису клієнта на  %(domain)s.<br/> Натисніть наведене нижче посилання, щоб налаштувати "
+"пароль."
 
 #: templates/templated_email/source/set_password.mjml:16
 #, python-format
@@ -6448,6 +6493,9 @@ msgid ""
 "You're receiving this e-mail because you have to set password for your staff member "
 "account at %(domain)s.<br/> Click the link below to set up your password."
 msgstr ""
+"Ви отримали це повідомлення на електронну пошту, тому що ви повинні встановити пароль для "
+"облікового запису вашого співробітника на %(domain)s.<br/> Натисніть наведене нижче "
+"посилання, щоб налаштувати пароль."
 
 #: templates/templated_email/source/update_fulfillment.mjml:16
 msgctxt "Fulfillment update email text"
@@ -6455,6 +6503,8 @@ msgid ""
 "Your shipping status has been updated. Below is the list of ordered products that have "
 "been updated with new tracking number."
 msgstr ""
+"Статус оновлення оновлено. Нижче наведено список замовлених продуктів, які були оновлені "
+"новим номером для відстеження."
 
 #: templates/templated_email/source/update_fulfillment.mjml:20
 #, python-format

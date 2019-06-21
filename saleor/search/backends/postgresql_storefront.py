@@ -1,3 +1,6 @@
+from django.contrib.postgres.search import (
+    SearchQuery, SearchRank, SearchVector)
+
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import Q
 

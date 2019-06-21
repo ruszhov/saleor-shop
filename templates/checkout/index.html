@@ -45,6 +45,7 @@
                 <img class="lazyload lazypreload" data-src="{% get_product_image_thumbnail line.variant.get_first_image method="thumbnail" size=60 %}"
                      data-srcset="{% get_product_image_thumbnail line.variant.get_first_image method="thumbnail" size=60 %} 1x, {% get_product_image_thumbnail line.variant.get_first_image method="thumbnail" size=120 %} 2x"
                      alt="">
+                <!-- <p>{{ line.variant.product.translated }}<br><small>{{ line.variant.translated }}</small></p> -->
                 <p>{{ line.variant.product.translated }}<br><small>{{ line.variant.translated }}</small></p>
               </a>
             </div>

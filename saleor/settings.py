@@ -106,9 +106,9 @@ USE_TZ = True
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
-EMAIL_URL = os.environ.get('EMAIL_URL')
-SENDGRID_USERNAME = os.environ.get('SENDGRID_USERNAME')
-SENDGRID_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
+EMAIL_URL = os.environ.get('EMAIL_URL', 'smtp://k.khoroshykh@akvarium.pro:Tksc8ejL5hZs@smtp.gmail.com:465/?ssl=True')
+SENDGRID_USERNAME = os.environ.get('SENDGRID_USERNAME', 'admin@akvarium.pro')
+SENDGRID_PASSWORD = os.environ.get('SENDGRID_PASSWORD', 'gfhjkm88hsdyz')
 if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
     EMAIL_URL = 'smtp://%s:%s@smtp.sendgrid.net:587/?tls=True' % (
         SENDGRID_USERNAME, SENDGRID_PASSWORD)
@@ -123,7 +123,7 @@ EMAIL_BACKEND = email_config['EMAIL_BACKEND']
 EMAIL_USE_TLS = email_config['EMAIL_USE_TLS']
 EMAIL_USE_SSL = email_config['EMAIL_USE_SSL']
 
-ENABLE_SSL = get_bool_from_env('ENABLE_SSL', False)
+ENABLE_SSL = get_bool_from_env('ENABLE_SSL', True)
 
 if ENABLE_SSL:
     SECURE_SSL_REDIRECT = not DEBUG
