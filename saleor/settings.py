@@ -106,7 +106,7 @@ USE_TZ = True
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
-EMAIL_URL = os.environ.get('EMAIL_URL', 'smtp://k.khoroshykh@akvarium.pro:Tksc8ejL5hZs@smtp.gmail.com:465/?ssl=True')
+EMAIL_URL = os.environ.get('EMAIL_URL', 'smtp://shop@akvarium.pro:Tksc8ejL5hZs@smtp.gmail.com:465/?ssl=True')
 SENDGRID_USERNAME = os.environ.get('SENDGRID_USERNAME', 'admin@akvarium.pro')
 SENDGRID_PASSWORD = os.environ.get('SENDGRID_PASSWORD', 'gfhjkm88hsdyz')
 if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
