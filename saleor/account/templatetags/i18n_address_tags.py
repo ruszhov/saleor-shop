@@ -9,7 +9,7 @@ register = template.Library()
 def format_address(address, include_phone=True, inline=False, latin=False):
     address_data = address.as_data()
     address_data['name'] = pgettext(
-        'Address data', '%(first_name)s %(last_name)s') % address_data
+        'Address data', '%(first_name)s  %(last_name)s') % address_data
     address_data['country_code'] = address_data['country']
     address_data['street_address'] = pgettext(
         'Address data',

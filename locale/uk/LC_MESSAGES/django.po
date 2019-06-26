@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-18 07:39-0500\n"
-"PO-Revision-Date: 2019-06-26 09:43+0300\n"
+"PO-Revision-Date: 2019-06-26 11:08+0300\n"
 "Last-Translator: Roman Storozhuk <roman.storozhuk@gmail.com>, 2019\n"
 "Language-Team: Ukrainian (https://www.transifex.com/mirumee/teams/34782/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -438,12 +438,12 @@ msgstr "Адреса відправлення не вказана"
 #: saleor/checkout/utils.py:905
 msgctxt "order placement error"
 msgid "Shipping method is not valid for your shipping address"
-msgstr ""
+msgstr "Метод відправки не актуальний для Вашої адреси"
 
 #: saleor/checkout/utils.py:908
 msgctxt "order placement_error"
 msgid "Billing address is not set"
-msgstr ""
+msgstr "Платіжна адреса не вказана"
 
 #: saleor/checkout/views/discount.py:62
 msgctxt "Checkout warning"
@@ -2698,7 +2698,7 @@ msgstr "Адреса доставки за замовчуванням"
 #: templates/dashboard/customer/detail.html:188
 msgctxt "Customer without default shipping address message"
 msgid "No default shipping address."
-msgstr "Немає адреси доставки за замовчуванням"
+msgstr "Немає адреси доставки за замовчуванням."
 
 #: templates/dashboard/customer/detail.html:201
 msgctxt "Customer default billing address card title"
@@ -2708,7 +2708,7 @@ msgstr "Платіжна адреса за замовчуванням"
 #: templates/dashboard/customer/detail.html:209
 msgctxt "Customer without default billing address message"
 msgid "No default billing address."
-msgstr "Немає платіжної адреси за замовчуванням"
+msgstr "Немає платіжної адреси за замовчуванням."
 
 #: templates/dashboard/customer/form.html:10
 msgctxt "Dashboard add customer"
@@ -3367,7 +3367,7 @@ msgstr "Редагувати адресу"
 #: templates/dashboard/order/address_form.html:39 templates/dashboard/order/detail.html:217
 msgctxt ""
 msgid "Shipping address"
-msgstr "Адреса доставки "
+msgstr "Адреса доставки"
 
 #: templates/dashboard/order/address_form.html:41 templates/dashboard/order/detail.html:233
 msgctxt ""
@@ -4120,7 +4120,7 @@ msgstr "Рахунок"
 #: templates/dashboard/order/pdf/invoice.html:21
 msgctxt "Invoice shipping address"
 msgid "Shipping address"
-msgstr "Адреса доставки "
+msgstr "Адреса доставки"
 
 #: templates/dashboard/order/pdf/invoice.html:26
 msgctxt "Invoice billing address"
@@ -4220,12 +4220,12 @@ msgstr "Деталі оплати"
 #: templates/dashboard/order/pdf/packing_slip.html:34
 msgctxt "Packing slip shipping address"
 msgid "Shipping address"
-msgstr "Адреса доставки "
+msgstr "Адреса доставки"
 
 #: templates/dashboard/order/pdf/packing_slip.html:43
 msgctxt "Packing slip billing address"
 msgid "Billing address"
-msgstr "Адреса оплати"
+msgstr "Платіжна адреса"
 
 #: templates/dashboard/order/pdf/packing_slip.html:52
 msgctxt "Order invoice"
@@ -6292,7 +6292,7 @@ msgstr "Адреса оплати"
 #: templates/templated_email/source/confirm_order.mjml:30
 msgctxt "Order confirmation e-mail shipping address"
 msgid "Shipping address"
-msgstr "Адреса доставки "
+msgstr "Адреса доставки"
 
 #: templates/templated_email/order/confirm_order.email:28
 #: templates/templated_email/source/confirm_order.mjml:42
