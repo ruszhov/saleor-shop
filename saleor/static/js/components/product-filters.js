@@ -19,3 +19,7 @@ $('.filter-section__header').on('click', (event) => {
 $('.filters-toggle').on('click', () => {
   $('.filters-menu__body').toggleClass('d-none');
 });
+
+$('#product-filters-form input[name="color"]').on('click', () => {
+  $('#product-filters-form').submit();
+});

@@ -7,7 +7,7 @@
 {#    {{ color }}#}
 {#  {% endfor %}#}
     <div class="product-filters__attributes" data-icon-up="{% static "images/chevron-up.svg" %}" data-icon-down="{% static "images/chevron-down.svg" %}">
-      <form method="get">
+      <form method="get" id="product-filters-form">
         {% for field in filter_set.form %}
           {% if field.name == 'sort_by' %}
             {% comment %}

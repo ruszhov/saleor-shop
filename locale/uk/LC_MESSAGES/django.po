@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-18 07:39-0500\n"
-"PO-Revision-Date: 2019-06-21 09:15+0300\n"
+"PO-Revision-Date: 2019-06-26 09:43+0300\n"
 "Last-Translator: Roman Storozhuk <roman.storozhuk@gmail.com>, 2019\n"
 "Language-Team: Ukrainian (https://www.transifex.com/mirumee/teams/34782/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -6212,7 +6212,7 @@ msgstr ""
 #, python-format
 msgctxt "Fulfillment confirmation email subject"
 msgid "A shipment from order %(order)s is on the way"
-msgstr ""
+msgstr "Відбувається відправлення замовлення %(order)s"
 
 #: templates/templated_email/order/confirm_fulfillment.email:11
 msgctxt "Fulfillment confirmation email text"
