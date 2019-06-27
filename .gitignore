@@ -36,3 +36,4 @@ dist/
 /templates_/
 /saleor_/
 /venv/
+/saleor/api_par_com/resources/json_file/*
