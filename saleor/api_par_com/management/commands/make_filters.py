@@ -28,9 +28,9 @@ class Command(BaseCommand):
         data_folder = os.path.join(PROJECT_ROOT, 'saleor', 'api_par_com', 'resources', 'json_file')
         product_type = ProductType.objects.get(name='Сувенірна продукція').id
         attr_update = {
-            "name": 'Material',
-            "slug": 'material',
-            "product_type_id": product_type,
+            # "name": 'Material',
+            # "slug": 'material',
+            # "product_type_id": product_type,
             # "product_variant_type_id": product_type
         }
         try:
@@ -39,7 +39,7 @@ class Command(BaseCommand):
                 setattr(attribute, key, value)
             attribute.save()
             display_format = "\nAttribute, {}, has been edited."
-            print(display_format.format(attribute))
+            # print(display_format.format(attribute))
         except Attribute.DoesNotExist:
             attr_create = {
                 "name": 'Material',
@@ -54,10 +54,10 @@ class Command(BaseCommand):
             print(display_format.format(attribute))
 
         attr_update = {
-            "name": 'Color',
-            "slug": 'color',
+            # "name": 'Color',
+            # "slug": 'color',
             # "product_type_id": product_type,
-            "product_variant_type_id": product_type
+            # "product_variant_type_id": product_type
         }
         try:
             attribute = Attribute.objects.get(product_variant_type_id=product_type)
@@ -65,7 +65,7 @@ class Command(BaseCommand):
                 setattr(attribute, key, value)
             attribute.save()
             display_format = "\nAttribute, {}, has been edited."
-            print(display_format.format(attribute))
+            # print(display_format.format(attribute))
         except Attribute.DoesNotExist:
             attr_create = {
                 "name": 'Color',
@@ -156,10 +156,10 @@ class Command(BaseCommand):
         data_folder = os.path.join(PROJECT_ROOT, 'saleor', 'api_par_com', 'resources', 'json_file')
         product_type = ProductType.objects.get(name='Сувенірна продукція').id
         attr_update = {
-            "name": 'Color',
-            "slug": 'color',
+            # "name": 'Color',
+            # "slug": 'color',
             # "product_type_id": product_type,
-            "product_variant_type_id": product_type
+            # "product_variant_type_id": product_type
         }
         try:
             attribute = Attribute.objects.get(product_variant_type_id=product_type)
@@ -167,7 +167,7 @@ class Command(BaseCommand):
                 setattr(attribute, key, value)
             attribute.save()
             display_format = "\nAttribute, {}, has been edited."
-            print(display_format.format(attribute))
+            # print(display_format.format(attribute))
         except Attribute.DoesNotExist:
             attr_create = {
                 "name": 'Color',

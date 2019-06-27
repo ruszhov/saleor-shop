@@ -79,13 +79,22 @@ class Command(BaseCommand):
         else:
             print("no file *xml")
 
-        raw = (requests.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')).text
-        json_path = os.path.join(data_folder, 'currency.json')
-        output_file = open(json_path, 'w')
-        output_file.write(raw)
-        output_file.close()
-        if output_file.closed:
-            print('currency closed')
+        remaining_download_tries = 15
+        while remaining_download_tries > 0:
+            try:
+                raw = (requests.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')).text
+                json_path = os.path.join(data_folder, 'currency.json')
+                output_file = open(json_path, 'w')
+                output_file.write(raw)
+                output_file.close()
+                if output_file.closed:
+                    print('currency closed')
+            except:
+                print('error downloading currencies')
+                remaining_download_tries = remaining_download_tries - 1
+                continue
+            else:
+                break        
 
         with open(os.path.join(data_folder, "currency.json"), encoding='utf-8',
                   errors='ignore') as currency_file:
@@ -134,7 +143,7 @@ class Command(BaseCommand):
                                     setattr(obj, key, value)
                                 obj.save()
                                 display_format = "\nProduct, {}, has been edited."
-                                print(display_format.format(obj))
+                                # print(display_format.format(obj))
                             except Product.DoesNotExist:
                                 products_create = {
                                     "id": id,
@@ -194,7 +203,7 @@ class Command(BaseCommand):
                                                 setattr(stock, key, value)
                                             stock.save()
                                             display_format = "\nStock, {}, has been edited."
-                                            print(display_format.format(stock))
+                                            # print(display_format.format(stock))
                                         except ProductVariant.DoesNotExist:
                                             stocks_create = {
                                                 # "id": id,

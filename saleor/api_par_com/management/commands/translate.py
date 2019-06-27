@@ -111,7 +111,7 @@ class Command(BaseCommand):
                     setattr(menu, key, value)
                 menu.save()
                 display_format = "\nTranslation for menu, {}, has been edited."
-                print(display_format.format(menu))
+                # print(display_format.format(menu))
             except MenuItemTranslation.DoesNotExist:
                 try:
                     pl_name = translator.translate(menu.name, dest='pl').text
@@ -141,7 +141,7 @@ class Command(BaseCommand):
                     setattr(menu, key, value)
                 uk_menu.save()
                 disukay_format = "\nTranslation for menu, {}, has been edited."
-                print(disukay_format.format(menu))
+                # print(disukay_format.format(menu))
             except MenuItemTranslation.DoesNotExist:
                 try:
                     uk_name = translator.translate(menu.name, dest='uk').text
@@ -172,7 +172,7 @@ class Command(BaseCommand):
                     setattr(menu, key, value)
                 menu.save()
                 disruay_format = "\nTranslation for menu, {}, has been edited."
-                print(disruay_format.format(menu))
+                # print(disruay_format.format(menu))
             except MenuItemTranslation.DoesNotExist:
                 try:
                     ru_name = translator.translate(menu.name, dest='ru').text
