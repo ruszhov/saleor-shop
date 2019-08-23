@@ -16,7 +16,7 @@
 !.pylintrc
 !.travis*
 !.tx
-*.css
+#*.css
 *.log
 *.pot
 *.pyc
