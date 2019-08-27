@@ -264,7 +264,7 @@ class Command(BaseCommand):
         for attr_id in attr_id:
 
             ###########      Polska   ##############################
-            pl_name = attr_id.id
+            pl_name = attr_id.name
             language_code = 'pl'
             # print(pl_color)
             pl_attr_update = {
@@ -274,7 +274,7 @@ class Command(BaseCommand):
                 # "attribute_id": attr_id.id
             }
             try:
-                attribute = AttributeTranslation.objects.get(attribute_id=pl_name, language_code=language_code)
+                attribute = AttributeTranslation.objects.get(attribute_id=attr_id.id, language_code=language_code)
                 for key, value in pl_attr_update.items():
                     setattr(attribute, key, value)
                 attribute.save()
@@ -299,7 +299,7 @@ class Command(BaseCommand):
 
 
             ############  Ukrainian ##########################
-            uk_name = attr_id.id
+            uk_name = attr_id.name
             language_code = 'uk'
             # print(pl_color)
             uk_attr_update = {
@@ -309,7 +309,7 @@ class Command(BaseCommand):
                 # "attribute_id": attr_id.id
             }
             try:
-                attribute = AttributeTranslation.objects.get(attribute_id=uk_name, language_code=language_code)
+                attribute = AttributeTranslation.objects.get(attribute_id=attr_id.id, language_code=language_code)
                 for key, value in uk_attr_update.items():
                     setattr(attribute, key, value)
                 attribute.save()
@@ -334,7 +334,7 @@ class Command(BaseCommand):
 
 
             ############  Russian ##########################
-            ru_name = attr_id.id
+            ru_name = attr_id.name
             language_code = 'ru'
             # print(pl_color)
             ru_attr_update = {
@@ -344,7 +344,7 @@ class Command(BaseCommand):
                 # "attribute_id": attr_id.id
             }
             try:
-                attribute = AttributeTranslation.objects.get(attribute_id=ru_name, language_code=language_code)
+                attribute = AttributeTranslation.objects.get(attribute_id=attr_id.id, language_code=language_code)
                 for key, value in ru_attr_update.items():
                     setattr(attribute, key, value)
                 attribute.save()
