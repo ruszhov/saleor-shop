@@ -295,78 +295,78 @@ class Command(BaseCommand):
                     display_format = "\nAttribbute, {}, has been created."
                     print(display_format.format(attribute))
                 except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                        print('Decoding JSON has failed PL', attribute.id)
-                
+                    print('Decoding JSON has failed PL', attribute.id)
 
-                ############  Ukrainian ##########################
-                uk_name = attr_id.id
-                language_code = 'uk'
-                # print(pl_color)
-                uk_attr_update = {
-                    # "name": uk_color,
-                    # "language_code": 'uk',
-                    # "product_type_id": product_type,
-                    # "attribute_id": attr_id.id
-                }
-                try:
-                    attribute = AttributeTranslation.objects.get(attribute_id=uk_name, language_code=language_code)
-                    for key, value in uk_attr_update.items():
-                        setattr(attribute, key, value)
-                    attribute.save()
-                    # display_format = "\nAttribute, {}, has been edited."
-                    # print(display_format.format(attribute))
-                except AttributeTranslation.DoesNotExist:
-                    try:
-                        uk_color = translator.translate(uk_name, dest=language_code).text
-                        uk_attr_create = {
-                            "name": uk_color,
-                            "language_code": language_code,
-                            # "product_type_id": product_type,
-                            "attribute_id": attr_id.id
-                        }
-                        uk_attr_create.update(uk_attr_update)
-                        attribute = AttributeTranslation(**uk_attr_create)
-                        attribute.save()
-                        display_format = "\nAttribbute, {}, has been created."
-                        print(display_format.format(attribute))
-                    except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                        print('Decoding JSON has failed UK', attribute.id)
-                    
 
-                ############  Russian ##########################
-                ru_name = attr_id.id
-                language_code = 'ru'                
-                # print(pl_color)
-                ru_attr_update = {
-                    # "name": ru_color,
-                    # "language_code": 'ru',
-                    # "product_type_id": product_type,
-                    # "attribute_id": attr_id.id
-                }
+            ############  Ukrainian ##########################
+            uk_name = attr_id.id
+            language_code = 'uk'
+            # print(pl_color)
+            uk_attr_update = {
+                # "name": uk_color,
+                # "language_code": 'uk',
+                # "product_type_id": product_type,
+                # "attribute_id": attr_id.id
+            }
+            try:
+                attribute = AttributeTranslation.objects.get(attribute_id=uk_name, language_code=language_code)
+                for key, value in uk_attr_update.items():
+                    setattr(attribute, key, value)
+                attribute.save()
+                # display_format = "\nAttribute, {}, has been edited."
+                # print(display_format.format(attribute))
+            except AttributeTranslation.DoesNotExist:
                 try:
-                    attribute = AttributeTranslation.objects.get(attribute_id=ru_name, language_code=language_code)
-                    for key, value in ru_attr_update.items():
-                        setattr(attribute, key, value)
+                    uk_color = translator.translate(uk_name, dest=language_code).text
+                    uk_attr_create = {
+                        "name": uk_color,
+                        "language_code": language_code,
+                        # "product_type_id": product_type,
+                        "attribute_id": attr_id.id
+                    }
+                    uk_attr_create.update(uk_attr_update)
+                    attribute = AttributeTranslation(**uk_attr_create)
                     attribute.save()
-                    # display_format = "\nAttribute, {}, has been edited."
-                    # print(display_format.format(attribute))
-                except AttributeTranslation.DoesNotExist:
-                    try:
-                        ru_color = translator.translate(ru_name, dest=language_code).text
-                        ru_attr_create = {
-                            "name": ru_color,
-                            "language_code": language_code,
-                            # "product_type_id": product_type,
-                            "attribute_id": attr_id.id
-                        }
-                        ru_attr_create.update(ru_attr_update)
-                        attribute = AttributeTranslation(**ru_attr_create)
-                        attribute.save()
-                        display_format = "\nAttribbute, {}, has been created."
-                        print(display_format.format(attribute))
-                    except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                        print('Decoding JSON has failed RU', attribute.id)
-                    
+                    display_format = "\nAttribbute, {}, has been created."
+                    print(display_format.format(attribute))
+                except ValueError:  # includes simplejson.decoder.JSONDecodeError
+                    print('Decoding JSON has failed UK', attribute.id)
+
+
+            ############  Russian ##########################
+            ru_name = attr_id.id
+            language_code = 'ru'
+            # print(pl_color)
+            ru_attr_update = {
+                # "name": ru_color,
+                # "language_code": 'ru',
+                # "product_type_id": product_type,
+                # "attribute_id": attr_id.id
+            }
+            try:
+                attribute = AttributeTranslation.objects.get(attribute_id=ru_name, language_code=language_code)
+                for key, value in ru_attr_update.items():
+                    setattr(attribute, key, value)
+                attribute.save()
+                # display_format = "\nAttribute, {}, has been edited."
+                # print(display_format.format(attribute))
+            except AttributeTranslation.DoesNotExist:
+                try:
+                    ru_color = translator.translate(ru_name, dest=language_code).text
+                    ru_attr_create = {
+                        "name": ru_color,
+                        "language_code": language_code,
+                        # "product_type_id": product_type,
+                        "attribute_id": attr_id.id
+                    }
+                    ru_attr_create.update(ru_attr_update)
+                    attribute = AttributeTranslation(**ru_attr_create)
+                    attribute.save()
+                    display_format = "\nAttribbute, {}, has been created."
+                    print(display_format.format(attribute))
+                except ValueError:  # includes simplejson.decoder.JSONDecodeError
+                    print('Decoding JSON has failed RU', attribute.id)
+
 
         #######################################################################
         #                      Attribute Value Translation                    #
@@ -377,7 +377,7 @@ class Command(BaseCommand):
 
             ###########      Polska   ##############################
             pl_name = attr_id.name
-            language_code = 'pl'            
+            language_code = 'pl'
             # print(pl_color)
             pl_attr_update = {
                 # "name": pl_color,
@@ -442,7 +442,7 @@ class Command(BaseCommand):
                     display_format = "\nAttribbute, {}, has been created."
                     print(display_format.format(attribute))
                 except ValueError:  # includes simplejson.decoder.JSONDecodeError
-                    print('Decoding JSON has failed UK', attribute.id)                    
+                    print('Decoding JSON has failed UK', attribute.id)
 
 
             ############  Russian ##########################
