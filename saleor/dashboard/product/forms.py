@@ -392,7 +392,7 @@ class ProductTranslationForm(forms.ModelForm, AttributesMixin):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['language_code'].widget.attrs['readonly'] = True
+        self.fields['language_code'].required = True
         self.fields['seo_title'].required = False
         self.fields['seo_description'].required = False
         self.fields['name'].required = True

@@ -57,7 +57,7 @@
 
 <div class="donttouch" style="display: block; width: 100%; height: 100%; overflow: hidden">
 <div class="left" style="float: left">
-<h1>Контактная информация</h1>
+<h1>Контакты</h1>
 <p>Телефон:</p>
 <ul>
 	<li><a href="tel:+380987275459">+380987275459</a></li>

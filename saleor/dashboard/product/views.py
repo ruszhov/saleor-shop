@@ -13,7 +13,7 @@ from django.views.decorators.http import require_POST
 from ...core.utils import get_paginator_items
 from ...discount.models import Sale
 from ...product.models import (
-    Attribute, AttributeValue, Product, ProductImage, ProductType,
+    Attribute, AttributeValue, Product, ProductTranslation, ProductImage, ProductType,
     ProductVariant, AttributeTranslation, AttributeValueTranslation)
 from ...product.utils.availability import get_availability
 from ...product.utils.costs import (
@@ -494,6 +494,31 @@ def translation_details(request, product_pk, translation_pk):
         request,
         'dashboard/product/product_translation/detail.html',
         ctx)
+
+@staff_member_required
+@permission_required('product.manage_products')
+def translation_create(request, product_pk):
+    product = get_object_or_404(Product, pk=product_pk)
+    form = forms.ProductTranslationForm(request.POST or None)
+    if form.is_valid():
+        prod_trans = form.save(commit=False)
+        if ProductTranslation.objects.all().aggregate(Max('id'))['id__max'] is not None:
+            prod_trans.id = ProductTranslation.objects.all().aggregate(Max('id'))['id__max'] + 1
+        else:
+            prod_trans.id = 1
+        prod_trans.product_id = product_pk
+        prod_trans.save()
+        msg = pgettext_lazy(
+            'Dashboard message', 'Saved product %s') % (product.name,)
+        messages.success(request, msg)
+        return redirect(
+            'dashboard:product-details', pk=product.pk)
+    ctx = {'form': form, 'product': product}
+    return TemplateResponse(
+        request,
+        'dashboard/product/product_translation/form.html',
+        ctx)
+
 
 @staff_member_required
 @permission_required('product.manage_products')

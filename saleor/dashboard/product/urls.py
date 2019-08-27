@@ -46,6 +46,10 @@ urlpatterns = [
 
     url(r'^(?P<product_pk>[0-9]+)/translations/(?P<translation_pk>[0-9]+)/$',
         views.translation_details, name='translation-details'),
+    url(r'^(?P<product_pk>[0-9]+)/translation/$',
+        views.translation_create, name='product-translation-add'),
+    url(r'^(?P<product_pk>[0-9]+)/translation/add/$',
+        views.translation_create, name='product-translation-add'),
     url(r'^(?P<product_pk>[0-9]+)/translations/(?P<translation_pk>[0-9]+)/update/$',
         views.translation_edit, name='translation-update'),
     url(r'^(?P<product_pk>[0-9]+)/translations/(?P<translation_pk>[0-9]+)/delete/$',
