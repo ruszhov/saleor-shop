@@ -288,42 +288,29 @@ if ENABLE_SILK:
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
-    'root': {
-        'level': 'INFO',
-        'handlers': ['console']},
+    'disable_existing_loggers': True,
     'formatters': {
         'verbose': {
-            'format': (
-                '%(levelname)s %(name)s %(message)s'
-                ' [PID:%(process)d:%(threadName)s]')},
-        'simple': {
-            'format': '%(levelname)s %(message)s'}},
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'}},
+            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'
+        }
+    },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'},
-        'console': {
+        'gunicorn': {
             'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'}},
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': '/data/saleor/logs/gunicorn.errors',
+            'maxBytes': 1024 * 1024 * 100,  # 100 mb
+        }
+    },
     'loggers': {
-        'django': {
-            'handlers': ['console', 'mail_admins'],
-            'level': 'INFO',
-            'propagate': True},
-        'django.server': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True},
-        'saleor': {
-            'handlers': ['console'],
+        'gunicorn.errors': {
             'level': 'DEBUG',
-            'propagate': True}}}
+            'handlers': ['gunicorn'],
+            'propagate': True,
+        },
+    }
+}
 
 AUTH_USER_MODEL = 'account.User'
 
