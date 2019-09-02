@@ -187,7 +187,7 @@ def menuitem_translation_edit(request, menu_pk, translation_pk):
             'Dashboard message', 'Saved translation %s') % (translation.name,)
         messages.success(request, msg)
         return redirect(
-            'dashboard:menuitem-translation-details', menu_pk=menuitem.pk,
+            'dashboard:menu-item-details', menu_pk=menuitem.pk,
             translation_pk=translation.pk)
     ctx = {'form': form, 'menuitem': menuitem, 'translation': translation}
     return TemplateResponse(

@@ -115,7 +115,7 @@ def category_translation_edit(request, root_pk, translation_pk):
             'Dashboard message', 'Saved variant %s') % (translation.name,)
         messages.success(request, msg)
         return redirect(
-            'dashboard:category-translation-details', pk=category.pk,
+            'dashboard:category-details', pk=category.pk,
             translation_pk=translation.pk)
     ctx = {'form': form, 'category': category, 'translation': translation}
     return TemplateResponse(

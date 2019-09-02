@@ -34,5 +34,6 @@ dist/
 /templates_/
 /saleor_/
 /venv/
+/saleor/static/assets/
 /saleor/api_par_com/resources/json_file/*
 webpack-bundle.json
