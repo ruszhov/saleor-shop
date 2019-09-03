@@ -105,7 +105,7 @@ class Command(BaseCommand):
                     eur_rate = round(decimal.Decimal(raw_rate_eur), 3)
                 elif currency_object['cc'] == 'PLN':
                     raw_rate_pln = currency_object['rate']
-                    pln_rate = round(decimal.Decimal(raw_rate_pln * 1.23 * 1.04), 3)
+                    pln_rate = round(decimal.Decimal(raw_rate_pln * 1.23), 3)
 
                     with open(os.path.join(data_folder, "products_en.json"), encoding='utf-8') as data_file:
                         data = json.loads(data_file.read())
