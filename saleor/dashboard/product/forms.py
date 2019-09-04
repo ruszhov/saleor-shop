@@ -375,6 +375,9 @@ class ProductVariantForm(forms.ModelForm, AttributesMixin):
         return super().save(commit=commit)
 
 class ProductTranslationForm(forms.ModelForm, AttributesMixin):
+
+    seo_description = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = ProductTranslation
         fields = [

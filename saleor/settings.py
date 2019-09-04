@@ -25,7 +25,7 @@ def get_bool_from_env(name, default_value):
     return default_value
 
 
-DEBUG = get_bool_from_env('DEBUG', True)
+DEBUG = get_bool_from_env('DEBUG', False)
 
 SITE_ID = 1
 
@@ -50,7 +50,7 @@ CACHES = {'default': django_cache_url.config()}
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://saleor:gfhjkm88hsdyz@localhost:5432/saleor',
+        default='postgres://saleor:Gfhjkm88hsdyz@localhost:5432/saleor',
         conn_max_age=600)}
 
 TIME_ZONE = 'Europe/Kiev'
@@ -125,8 +125,8 @@ EMAIL_USE_SSL = email_config['EMAIL_USE_SSL']
 
 ENABLE_SSL = get_bool_from_env('ENABLE_SSL', True)
 
-if ENABLE_SSL:
-    SECURE_SSL_REDIRECT = not DEBUG
+# if ENABLE_SSL:
+#     SECURE_SSL_REDIRECT = not DEBUG
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 ORDER_FROM_EMAIL = os.getenv('ORDER_FROM_EMAIL', DEFAULT_FROM_EMAIL)
@@ -618,4 +618,3 @@ GRAPHENE = {
 #     from .settings_prod import *
 # except:
 #     pass
-
