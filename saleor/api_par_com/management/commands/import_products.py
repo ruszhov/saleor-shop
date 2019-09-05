@@ -183,7 +183,8 @@ class Command(BaseCommand):
                                         if stock_object.get('ilosc_dostawy', 0) == None:
                                             quantity_allocated = 0
                                         else:
-                                            quantity_allocated = stock_object.get('ilosc_dostawy', 0)
+                                            # quantity_allocated = stock_object.get('ilosc_dostawy', 0)
+                                            quantity_allocated = 0
 
                                         stocks_update = {
                                             # "id": id,

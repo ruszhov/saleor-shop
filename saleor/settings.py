@@ -180,7 +180,7 @@ TEMPLATES = [{
 
 # Make this unique, and don't share it with anybody.
 #SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = 'zaq1!QAZ'
+SECRET_KEY = 'zQ6Huhh8EQWXMqv2VbkuepwK3A5NqfG9CUhzVKnKVW2KuzjeL97SWLF3vNwBBvUzJksTeEvAMyLRz7MHW5fk4Z8QbaKVLTfa5jmF'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',

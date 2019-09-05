@@ -44,6 +44,7 @@
   <div class="row">
     <div class="col s12 l9" id="product-list">
     {% if products %}
+      {% paginate products %}
       <div class="card">
         <form method="POST" action="{% url 'dashboard:product-bulk-update' %}" novalidate id="bulk-actions-form">
           {% csrf_token %}
@@ -66,7 +67,6 @@
             </tr>
           </thead>
           <tbody>
-          {% paginate products %}
           {% for product in products %}
             <tr class="avatar" data-action-go="{% url 'dashboard:product-details' pk=product.pk %}">
               <td class="bulk-checkbox ignore-link">
