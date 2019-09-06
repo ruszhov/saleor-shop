@@ -532,8 +532,9 @@ def translation_edit(request, product_pk, translation_pk):
             'Dashboard message', 'Saved variant %s') % (translation.name,)
         messages.success(request, msg)
         return redirect(
-            'dashboard:translation-details', product_pk=product.pk,
-            translation_pk=translation.pk)
+            # 'dashboard:translation-details', product_pk=product.pk,
+            # translation_pk=translation.pk)
+            'dashboard:product-list')
     ctx = {'form': form, 'product': product, 'translation': translation}
     return TemplateResponse(
         request,
