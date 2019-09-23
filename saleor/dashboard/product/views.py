@@ -534,7 +534,7 @@ def translation_edit(request, product_pk, translation_pk):
         return redirect(
             # 'dashboard:translation-details', product_pk=product.pk,
             # translation_pk=translation.pk)
-            'dashboard:product-list')
+            'dashboard:product-details', pk=product.pk)
     ctx = {'form': form, 'product': product, 'translation': translation}
     return TemplateResponse(
         request,
