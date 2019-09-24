@@ -6307,3 +6307,8 @@ msgstr "Ваш статус доставки обновлён. Ниже прив
 msgctxt "Fulfillment update email text"
 msgid "You can track your shipment with %(tracking_number)s code."
 msgstr "Вы можете отслеживать доставку с помощью кода %(tracking_number)s."
+
+#: templates/dashboard/product/detail.html:120
+msgctxt "Product action"
+msgid "To Paginated List"
+msgstr "К списку товаров"

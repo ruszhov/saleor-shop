@@ -6511,3 +6511,8 @@ msgstr ""
 msgctxt "Fulfillment update email text"
 msgid "You can track your shipment with %(tracking_number)s code."
 msgstr ""
+
+#: templates/dashboard/product/detail.html:120
+msgctxt "Product action"
+msgid "To Paginated List"
+msgstr "До списку товарів"

@@ -15,3 +15,4 @@ import './side-menu';
 import './sortable.js';
 import './tab';
 import './vouchers';
+import './akvarium';

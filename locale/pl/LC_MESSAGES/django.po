@@ -6215,3 +6215,8 @@ msgstr ""
 msgctxt "Fulfillment update email text"
 msgid "You can track your shipment with %(tracking_number)s code."
 msgstr "Swoją przesyłkę możesz śledzić przy użyciu kodu %(tracking_number)s."
+
+#: templates/dashboard/product/detail.html:120
+msgctxt "Product action"
+msgid "To Paginated List"
+msgstr "Do listy stronicowanych"
