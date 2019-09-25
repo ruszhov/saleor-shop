@@ -971,3 +971,23 @@ def ajax_reorder_attribute_values(request, attribute_pk):
         status = 400
         ctx = {'error': form.errors}
     return JsonResponse(ctx, status=status)
+
+
+@staff_member_required
+@permission_required('product.manage_products')
+def ajax_paged_url(request):
+    if request.method == "POST" and request.is_ajax():
+        paged_url = request.POST['paged_url']
+        request.session['paged_url'] = paged_url
+        status = "Good"
+        return JsonResponse(status, safe=False)
+    else:
+        status = "Bad"
+        return JsonResponse(status, safe=False)
+
+@staff_member_required
+@permission_required('product.manage_products')
+def return_to_paged_url(request):
+    if 'paged_url' in request.session:
+        redirect_to = request.session['paged_url']
+        return redirect(redirect_to)

@@ -116,7 +116,7 @@
           <a href="{{ product.get_absolute_url }}" target="_blank" class="btn-flat waves-effect">
             {% trans "View on site" context "Product action" %}
           </a>
-          <a class="btn-flat waves-effect" id="paginated_url">
+          <a href="{% url 'dashboard:return-to-paged-url' %}"class="btn-flat waves-effect" id="paginated_url">
             {% trans "To Paginated List" context "Product action" %}
           </a>
         </div>
