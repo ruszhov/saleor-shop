@@ -70,7 +70,7 @@ for (let item of rows) {
       data : data,
       cache: false,
       success: function(data){
-        // alert('Ajax OK');
+        alert(data);
       }
     });
   };
