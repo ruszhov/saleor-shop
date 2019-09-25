@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 from django.db.models import Q
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.template.response import TemplateResponse
 from django.utils.translation import npgettext_lazy, pgettext_lazy
@@ -977,20 +977,15 @@ def ajax_reorder_attribute_values(request, attribute_pk):
 @permission_required('product.manage_products')
 def ajax_paged_url(request):
     if request.method == "POST" and request.is_ajax():
-        print(request.POST)
         paged_url = request.POST['paged_url']
-        print(paged_url)
         request.session['paged_url'] = paged_url
-        status = "Good"
-        return JsonResponse(status, safe=False)
+        return JsonResponse(True, safe=False)
     else:
-        status = "Bad"
-        return JsonResponse(status, safe=False)
+        return JsonResponse(False, safe=False)
 
 @staff_member_required
 @permission_required('product.manage_products')
 def return_to_paged_url(request):
     if 'paged_url' in request.session:
         redirect_to = request.session['paged_url']
-        # return redirect(redirect_to)
-        return HttpResponseRedirect(redirect_to)
+        return redirect(redirect_to)
