@@ -977,7 +977,9 @@ def ajax_reorder_attribute_values(request, attribute_pk):
 @permission_required('product.manage_products')
 def ajax_paged_url(request):
     if request.method == "POST" and request.is_ajax():
+        print(request.POST)
         paged_url = request.POST['paged_url']
+        print(paged_url)
         request.session['paged_url'] = paged_url
         status = "Good"
         return JsonResponse(status, safe=False)
