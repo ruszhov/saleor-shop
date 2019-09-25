@@ -296,7 +296,7 @@ LOGGING = {
     },
     'handlers': {
         'gunicorn': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'verbose',
             'filename': '/data/saleor/logs/debug.log',
@@ -306,7 +306,7 @@ LOGGING = {
     'loggers': {
         'gunicorn.errors': {
             'level': 'DEBUG',
-            'handlers': ['console'],
+            'handlers': ['gunicorn'],
             'propagate': True,
         },
     }
