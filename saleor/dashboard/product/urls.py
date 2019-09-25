@@ -121,6 +121,6 @@ urlpatterns = [
         views.attributevalue_translation_delete, name='attributevalue-translation-delete'),
 
     # temporary redirect to previous url after product saving
-    url(r'ajax-paged-url', views.ajax_paged_url, name='ajax-paged-url'),
-    url(r'return-to-paged-url/$', views.return_to_paged_url, name='return-to-paged-url'),
+    url(r'^ajax-paged-url/$', views.ajax_paged_url, name='ajax-paged-url'),
+    url(r'^return-to-paged-url/$', views.return_to_paged_url, name='return-to-paged-url'),
 ]

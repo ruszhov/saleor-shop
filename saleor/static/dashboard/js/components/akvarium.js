@@ -65,7 +65,7 @@ for (let item of rows) {
     data["paged_url"] = window.location.href;
     data["csrfmiddlewaretoken"]= getCookie('csrftoken');
       $.ajax({
-      url : '{% url "ajax-paged-url" %}',
+      url : '/dashboard/products/ajax-paged-url/',
       type : "POST",
       data : data,
       cache: false,
