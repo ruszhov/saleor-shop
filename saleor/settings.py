@@ -289,27 +289,20 @@ if ENABLE_SILK:
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'
-        }
-    },
     'handlers': {
-        'gunicorn': {
+        'file': {
             'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'formatter': 'verbose',
+            'class': 'logging.FileHandler',
             'filename': '/data/saleor/logs/debug.log',
-            'maxBytes': 1024 * 1024 * 100,  # 100 mb
-        }
+        },
     },
     'loggers': {
-        'gunicorn.errors': {
+        'django': {
+            'handlers': ['file'],
             'level': 'DEBUG',
-            'handlers': ['gunicorn'],
             'propagate': True,
         },
-    }
+    },
 }
 
 AUTH_USER_MODEL = 'account.User'
