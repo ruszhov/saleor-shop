@@ -288,7 +288,7 @@ if ENABLE_SILK:
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
             'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'
@@ -296,7 +296,7 @@ LOGGING = {
     },
     'handlers': {
         'gunicorn': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'verbose',
             'filename': '/data/saleor/logs/debug.log',
@@ -306,7 +306,7 @@ LOGGING = {
     'loggers': {
         'gunicorn.errors': {
             'level': 'DEBUG',
-            'handlers': ['gunicorn'],
+            'handlers': ['console'],
             'propagate': True,
         },
     }
