@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.template.response import TemplateResponse
 from django.utils.translation import npgettext_lazy, pgettext_lazy
@@ -990,4 +990,5 @@ def ajax_paged_url(request):
 def return_to_paged_url(request):
     if 'paged_url' in request.session:
         redirect_to = request.session['paged_url']
-        return redirect(redirect_to)
+        # return redirect(redirect_to)
+        return HttpResponseRedirect(redirect_to)
