@@ -120,33 +120,36 @@ class Command(BaseCommand):
                         print(display_format.format(attribute))
 
 
-                    products = Product.objects.get(id=id)
-                    # print(type(products))
-                    # for product in products:
-                    attr_val_id = AttributeValue.objects.get(name=material).id
-                    ai = str(attr_id)
-                    avi = str(attr_val_id)
-                    out = '"' + ai + '"=>"' + avi + '"'
-
-                    prod_attr_upd = {
-                        "attributes": out
-                    }
                     try:
-                        obj = Product.objects.get(id=products.id)
-                        for key, value in prod_attr_upd.items():
-                            setattr(obj, key, value)
-                        obj.save()
-                        display_format = "\nMaterial-attribute, {}, has been edited."
-                        print(display_format.format(obj))
-                    except Product.DoesNotExist:
-                        prod_attr_crt = {
+                        products = Product.objects.get(id=id)
+                        # print(type(products))
+                        # for product in products:
+                        attr_val_id = AttributeValue.objects.get(name=material).id
+                        ai = str(attr_id)
+                        avi = str(attr_val_id)
+                        out = '"' + ai + '"=>"' + avi + '"'
+
+                        prod_attr_upd = {
                             "attributes": out
                         }
-                        prod_attr_crt.update(prod_attr_upd)
-                        obj = Product(**prod_attr_crt)
-                        obj.save()
-                        display_format = "\nMaterial-attribute, {}, has been created."
-                        print(display_format.format(obj))
+                        try:
+                            obj = Product.objects.get(id=products.id)
+                            for key, value in prod_attr_upd.items():
+                                setattr(obj, key, value)
+                            obj.save()
+                            display_format = "\nMaterial-attribute, {}, has been edited."
+                            print(display_format.format(obj))
+                        except Product.DoesNotExist:
+                            prod_attr_crt = {
+                                "attributes": out
+                            }
+                            prod_attr_crt.update(prod_attr_upd)
+                            obj = Product(**prod_attr_crt)
+                            obj.save()
+                            display_format = "\nMaterial-attribute, {}, has been created."
+                            print(display_format.format(obj))
+                    except Product.DoesNotExist:
+                        pass
                 else:
                     pass
 

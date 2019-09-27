@@ -6312,3 +6312,18 @@ msgstr "Вы можете отслеживать доставку с помощ�
 msgctxt "Product action"
 msgid "To Paginated List"
 msgstr "К списку товаров"
+
+#: templates/base.html:12
+msgctxt "Main navigation item"
+msgid "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine."
+msgstr "Интернет магазин сувенирной продукции. Сувенирная продукция. Магазин сувениров. Рекламное агентство \ "Аквариум \". Рекламное агентство в Львове, Украина."
+
+#: templates/base.html:58
+msgctxt "Main navigation item"
+msgid "Online souvenier shop"
+msgstr "Интернет магазин сувенирной продукции"
+
+#: templates/base.html:299
+msgctxt "Main navigation item"
+msgid "© 2019 \"Akvarium\" Advertising Agency"
+msgstr "© 2019 Рекламное агентство \"Аквариум\""

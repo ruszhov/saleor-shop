@@ -117,96 +117,78 @@ class Command(BaseCommand):
                         #     print("no")
                         # !!!
                         for data_object in data['products']['product']:
-                            id = data_object.get('id', None)
-                            name = data_object.get('nazwa', None)
-                            description = data_object.get('opis', None)
-                            description = description[:500]
-                            raw_price = data_object.get('cena_eur', None)
-                            dec_price = decimal.Decimal(raw_price)
-                            raw_json = json.dumps({"blocks": [{"key": "", "data": {}, "text": description, "type": "unstyled", "depth": 0, "entityRanges": [], "inlineStyleRanges": []}], "entityMap": {}})
-                            out_json = json.loads(raw_json)
+                            sale = data_object.get('wyprzedaz', None)
+                            if sale == 'false':
+                                id = data_object.get('id', None)
+                                name = data_object.get('nazwa', None)
+                                description = data_object.get('opis', None)
+                                description = description[:500]
+                                raw_price = data_object.get('cena_eur', None)
+                                dec_price = decimal.Decimal(raw_price)
+                                raw_json = json.dumps({"blocks": [{"key": "", "data": {}, "text": description, "type": "unstyled", "depth": 0, "entityRanges": [], "inlineStyleRanges": []}], "entityMap": {}})
+                                out_json = json.loads(raw_json)
 
-                            products_update = {
-                                # "id": id,
-                                "name": name,
-                                # "description": description,
-                                # "price": Money(dec_price * eur_rate, DEFAULT_CURRENCY),
-                                # "product_type_id": int(product_type),
-                                # "attributes": out_mater_attr,
-                                # "seo_description": description,
-                                # "seo_title": name,
-                                # "description_json": out_json
-                            }
-                            try:
-                                obj = Product.objects.get(id=id)
-                                for key, value in products_update.items():
-                                    setattr(obj, key, value)
-                                obj.save()
-                                display_format = "\nProduct, {}, has been edited."
-                                # print(display_format.format(obj))
-                            except Product.DoesNotExist:
-                                products_create = {
-                                    "id": id,
+                                products_update = {
+                                    # "id": id,
                                     "name": name,
-                                    "description": description,
-                                    "price": Money(dec_price * eur_rate, DEFAULT_CURRENCY),
-                                    "product_type_id": product_type,
+                                    # "description": description,
+                                    # "price": Money(dec_price * eur_rate, DEFAULT_CURRENCY),
+                                    # "product_type_id": int(product_type),
                                     # "attributes": out_mater_attr,
-                                    "seo_description": description,
-                                    "seo_title": name,
-                                    "description_json": out_json
+                                    # "seo_description": description,
+                                    # "seo_title": name,
+                                    # "description_json": out_json
                                 }
-                                products_create.update(products_update)
-                                obj = Product(**products_create)
-                                obj.save()
-                                display_format = "\nProduct, {}, has been created."
-                                print(display_format.format(obj))
+                                try:
+                                    obj = Product.objects.get(id=id)
+                                    for key, value in products_update.items():
+                                        setattr(obj, key, value)
+                                    obj.save()
+                                    display_format = "\nProduct, {}, has been edited."
+                                    # print(display_format.format(obj))
+                                except Product.DoesNotExist:
+                                    products_create = {
+                                        "id": id,
+                                        "name": name,
+                                        "description": description,
+                                        "price": Money(dec_price * eur_rate, DEFAULT_CURRENCY),
+                                        "product_type_id": product_type,
+                                        # "attributes": out_mater_attr,
+                                        "seo_description": description,
+                                        "seo_title": name,
+                                        "description_json": out_json
+                                    }
+                                    products_create.update(products_update)
+                                    obj = Product(**products_create)
+                                    obj.save()
+                                    display_format = "\nProduct, {}, has been created."
+                                    print(display_format.format(obj))
 
-                            #################################################################
-                            ####            Product Variant creating                     ####
-                            #################################################################
-                            sku = data_object.get('kod', None)
-                            color_name = data_object.get('kolor_podstawowy', None)
-                            weight = data_object['opakowania']['karton_duzy']['waga_netto']
+                                #################################################################
+                                ####            Product Variant creating                     ####
+                                #################################################################
+                                sku = data_object.get('kod', None)
+                                color_name = data_object.get('kolor_podstawowy', None)
+                                weight = data_object['opakowania']['karton_duzy']['waga_netto']
 
-                            with open(os.path.join(data_folder, "stocks.json"), encoding='utf-8') as stock_file:
-                                stock = json.loads(stock_file.read())
-                                for stock_object in stock['produkty']['produkt']:
-                                    # print(stock_object)
-                                    if stock_object['id'] == id and stock_object['kod'] == sku:
-                                        price_ov_raw = stock_object['cena_katalogowa']
-                                        price_ov = decimal.Decimal(price_ov_raw)
-                                        cost_price_raw = stock_object['cena_po_rabacie']
-                                        cost_price = decimal.Decimal(cost_price_raw)
-                                        quantity = stock_object['stan_magazynowy']
+                                with open(os.path.join(data_folder, "stocks.json"), encoding='utf-8') as stock_file:
+                                    stock = json.loads(stock_file.read())
+                                    for stock_object in stock['produkty']['produkt']:
+                                        # print(stock_object)
+                                        if stock_object['id'] == id and stock_object['kod'] == sku:
+                                            price_ov_raw = stock_object['cena_katalogowa']
+                                            price_ov = decimal.Decimal(price_ov_raw)
+                                            cost_price_raw = stock_object['cena_po_rabacie']
+                                            cost_price = decimal.Decimal(cost_price_raw)
+                                            quantity = stock_object['stan_magazynowy']
 
-                                        if stock_object.get('ilosc_dostawy', 0) == None:
-                                            quantity_allocated = 0
-                                        else:
-                                            # quantity_allocated = stock_object.get('ilosc_dostawy', 0)
-                                            quantity_allocated = 0
+                                            if stock_object.get('ilosc_dostawy', 0) == None:
+                                                quantity_allocated = 0
+                                            else:
+                                                # quantity_allocated = stock_object.get('ilosc_dostawy', 0)
+                                                quantity_allocated = 0
 
-                                        stocks_update = {
-                                            # "id": id,
-                                            "sku": sku,
-                                            "name": color_name,
-                                            "price_override": Money(price_ov * pln_rate, DEFAULT_CURRENCY),
-                                            "product_id": id,
-                                            "cost_price": Money(cost_price * pln_rate, DEFAULT_CURRENCY),
-                                            "quantity": quantity,
-                                            "quantity_allocated": quantity_allocated,
-                                            "track_inventory": False,
-                                            "weight": weight
-                                        }
-                                        try:
-                                            stock = ProductVariant.objects.get(sku=sku)
-                                            for key, value in stocks_update.items():
-                                                setattr(stock, key, value)
-                                            stock.save()
-                                            display_format = "\nStock, {}, has been edited."
-                                            # print(display_format.format(stock))
-                                        except ProductVariant.DoesNotExist:
-                                            stocks_create = {
+                                            stocks_update = {
                                                 # "id": id,
                                                 "sku": sku,
                                                 "name": color_name,
@@ -218,15 +200,37 @@ class Command(BaseCommand):
                                                 "track_inventory": False,
                                                 "weight": weight
                                             }
-                                            stocks_update.update(stocks_update)
-                                            stock = ProductVariant(**stocks_create)
-                                            stock.save()
-                                            display_format = "\nStock, {}, has been created."
-                                            print(display_format.format(stock))
+                                            try:
+                                                stock = ProductVariant.objects.get(sku=sku)
+                                                for key, value in stocks_update.items():
+                                                    setattr(stock, key, value)
+                                                stock.save()
+                                                display_format = "\nStock, {}, has been edited."
+                                                # print(display_format.format(stock))
+                                            except ProductVariant.DoesNotExist:
+                                                stocks_create = {
+                                                    # "id": id,
+                                                    "sku": sku,
+                                                    "name": color_name,
+                                                    "price_override": Money(price_ov * pln_rate, DEFAULT_CURRENCY),
+                                                    "product_id": id,
+                                                    "cost_price": Money(cost_price * pln_rate, DEFAULT_CURRENCY),
+                                                    "quantity": quantity,
+                                                    "quantity_allocated": quantity_allocated,
+                                                    "track_inventory": False,
+                                                    "weight": weight
+                                                }
+                                                stocks_update.update(stocks_update)
+                                                stock = ProductVariant(**stocks_create)
+                                                stock.save()
+                                                display_format = "\nStock, {}, has been created."
+                                                print(display_format.format(stock))
 
-                                        price_update = Product.objects.get(id=id)
-                                        price_update.price = Money(price_ov * pln_rate, DEFAULT_CURRENCY)
-                                        price_update.save()
+                                            price_update = Product.objects.get(id=id)
+                                            price_update.price = Money(price_ov * pln_rate, DEFAULT_CURRENCY)
+                                            price_update.save()
+                            else:
+                                pass
 
                             #################################################################
                             ####            m2m node-product adding                      ####

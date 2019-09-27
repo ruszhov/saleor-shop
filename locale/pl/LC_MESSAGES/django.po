@@ -6220,3 +6220,18 @@ msgstr "Swoją przesyłkę możesz śledzić przy użyciu kodu %(tracking_number
 msgctxt "Product action"
 msgid "To Paginated List"
 msgstr "Do listy stronicowanych"
+
+#: templates/base.html:12
+msgctxt "Main navigation item"
+msgid "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine."
+msgstr "Internetowy sklep z pamiątkami. Produkty z pamiątkami. Sklep z pamiątkami. Agencja reklamowa \"Akwarium\". Agencja reklamowa we Lwowie, Ukraina."
+
+#: templates/base.html:58
+msgctxt "Main navigation item"
+msgid "Online souvenier shop"
+msgstr "Internetowy sklep z pamiątkami"
+
+#: templates/base.html:299
+msgctxt "Main navigation item"
+msgid "© 2019 \"Akvarium\" Advertising Agency"
+msgstr "© 2019 Agencja reklamowa \"Akwarium\""

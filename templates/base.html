@@ -8,11 +8,12 @@
 
 <html lang="{{ LANGUAGE_CODE }}" class="no-js" data-shipping-options-url="{% url 'cart:shipping-options' %}" data-cart-summary-url="{% url 'cart:summary' %}">
 <head>
-  <title>{% block title %}{{ site.name }}{% endblock %}</title>
+{#  <title>{% block title %}{{ site.name }}{% endblock %}</title>#}
+  <title>{% block title %}{% trans "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine." context "Main navigation item" %}{% endblock %}</title>
   {% block meta %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Saleor">
+    <meta name="generator" content="Akvarium">
     <meta name="theme-color" content="#333333">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -53,7 +54,8 @@
       <div class=" d-none d-md-block container">
       <div class="row">
         <div class="col-6">
-          <p class="text-left">{{ site.settings.translated.header_text }}</p>
+{#          <p class="text-left">{{ site.settings.translated.header_text }}</p>#}
+          <p class="text-left">{% trans 'Online souvenier shop' context "Main navigation item" %}</p>
         </div>
         <div class="col-6">
           <ul class="float-right">
@@ -294,7 +296,7 @@
             <svg data-src="{% static "images/akvarim/Akvarium_ENG.svg" %}"/>
           </a>
         </div>
-        <div class="col-8 footer__copy-text">COPYRIGHT © 2019 AKVARIUM</div>
+        <div class="col-8 footer__copy-text">{% trans "© 2019 \"Akvarium\" Advertising Agency" context "Main navigation item" %}</div>
       </div>
     </div>
   </div>
