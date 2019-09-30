@@ -249,7 +249,9 @@
         <div class="product__info__form-error">
           <small class="text-danger"></small>
         </div>
-
+        {% for variant in product.variants.all %}
+          <p><h6>{% trans "Availability:" context "Availability" %} <b>{{ variant.quantity }}</b> {% trans "pcs." context "Availability" %}</h6></p>
+        {% endfor %}
       {% else %}
         <p class="alert alert-warning">
           {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}

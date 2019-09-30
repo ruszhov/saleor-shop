@@ -6327,3 +6327,13 @@ msgstr "Интернет магазин сувенирной продукции"
 msgctxt "Main navigation item"
 msgid "© 2019 \"Akvarium\" Advertising Agency"
 msgstr "© 2019 Рекламное агентство \"Аквариум\""
+
+#: templates/product/details.html:253
+msgctxt "Availability"
+msgid "Availability:"
+msgstr "Доступность:"
+
+#: templates/product/details.html:253
+msgctxt "Availability"
+msgid "pcs."
+msgstr "шт."

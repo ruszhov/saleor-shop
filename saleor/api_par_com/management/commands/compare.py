@@ -43,8 +43,7 @@ class Command(BaseCommand):
                     id = data_object.get('id', None)
                     file_ids.append(int(id))
                 else:
-                    sku = data_object.get('kod', None)
-                    brak_sku.append(sku)
+                    pass
 
         # Compare products in database and in file
         ids_form_bd = Product.objects.all()

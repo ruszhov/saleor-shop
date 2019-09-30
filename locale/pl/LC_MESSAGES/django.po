@@ -6235,3 +6235,13 @@ msgstr "Internetowy sklep z pamiątkami"
 msgctxt "Main navigation item"
 msgid "© 2019 \"Akvarium\" Advertising Agency"
 msgstr "© 2019 Agencja reklamowa \"Akwarium\""
+
+#: templates/product/details.html:253
+msgctxt "Availability"
+msgid "Availability:"
+msgstr "Dostępność:"
+
+#: templates/product/details.html:253
+msgctxt "Availability"
+msgid "pcs."
+msgstr "szt."

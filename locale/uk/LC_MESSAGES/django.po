@@ -6287,3 +6287,13 @@ msgstr "Інтернет магазин сувенірної продукції"
 msgctxt "Main navigation item"
 msgid "© 2019 \"Akvarium\" Advertising Agency"
 msgstr "© 2019 Рекламне агентство \"Акваріум\""
+
+#: templates/product/details.html:253
+msgctxt "Availability"
+msgid "Availability:"
+msgstr "Доступність:"
+
+#: templates/product/details.html:253
+msgctxt "Availability"
+msgid "pcs."
+msgstr "шт."
