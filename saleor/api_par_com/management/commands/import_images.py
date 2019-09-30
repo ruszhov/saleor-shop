@@ -97,11 +97,12 @@ class Command(BaseCommand):
                                 }
                                 products_create.update(products_update)
                                 obj = ProductImage(**products_create)
-                                obj.save()
-                                display_format = "\nProductImage, {},has been created."
-                                print(display_format.format(obj))
-
-
+                                try:
+                                    obj.save()
+                                    display_format = "\nProductImage, {},has been created."
+                                    print(display_format.format(obj))
+                                except Product.DoesNotExist:
+                                    pass
 
                     else:
                         url = par_url + v
@@ -148,9 +149,12 @@ class Command(BaseCommand):
 
                             products_create.update(products_update)
                             obj = ProductImage(**products_create)
-                            obj.save()
-                            # display_format = "\nImage, {}, does not exests."
-                            # print(display_format.format(obj))
+                            try:
+                                obj.save()
+                                # display_format = "\nImage, {}, does not exests."
+                                # print(display_format.format(obj))
+                            except Product.DoesNotExist:
+                                pass
 
 
     def handle(self, *args, **options):
