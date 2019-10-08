@@ -90,16 +90,16 @@ class Command(BaseCommand):
 
                             variants_update = {
                                 # "id": id,
-                                "sku": akv_sku,
-                                "name": name,
-                                "price_override": None,
-                                "product_id": product_id,
-                                "attributes": "",
-                                "cost_price":None,
-                                "quantity": 1000,
-                                "quantity_allocated": 0,
-                                "track_inventory": False,
-                                "weight": None
+                                # "sku": akv_sku,
+                                # "name": name,
+                                # "price_override": None,
+                                # "product_id": product_id,
+                                # "attributes": "",
+                                # "cost_price":None,
+                                # "quantity": 1000,
+                                # "quantity_allocated": 0,
+                                # "track_inventory": False,
+                                # "weight": None
                             }
                             try:
                                 variant = ProductVariant.objects.get(sku=akv_sku)
