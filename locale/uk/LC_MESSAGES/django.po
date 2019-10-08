@@ -5885,12 +5885,12 @@ msgstr "Сортувати по"
 #: templates/product/product_list_base.html:120
 msgctxt "sort by option"
 msgid "ascending"
-msgstr "спочатку дешевші"
+msgstr "зростає"
 
 #: templates/product/product_list_base.html:126
 msgctxt "sort by option"
 msgid "descending"
-msgstr "спочатку дорожчі"
+msgstr "спадає"
 
 #: templates/product/product_list_base.html:158 templates/search/results.html:34
 msgctxt "Search without results text"

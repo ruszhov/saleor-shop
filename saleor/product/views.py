@@ -66,12 +66,12 @@ def product_details(request, slug, product_id, form=None):
     variant_picker_data = get_variant_picker_data(
         product, request.discounts, request.taxes, request.currency)
     product_attributes = get_product_attributes_data(product)
-    # show_variant_picker determines if variant picker is used or select input
     show_variant_picker = all([v.attributes for v in product.variants.all()])
     json_ld_data = product_json_ld(product, product_attributes)
     categories = Category.objects.prefetch_related('translations')
 
-    sku = get_object_or_404(ProductVariant, product_id=product_id)
+    # sku = get_object_or_404(ProductVariant, product_id=product_id)
+    sku = ProductVariant.objects.filter(product_id=product_id).exclude(sku__contains="-")
     try:
         cat = get_object_or_404(categories, pk=request.session.get('category_id'))
     except:
@@ -193,3 +193,19 @@ def collection_index(request, slug, pk):
     ctx = get_product_list_context(request, product_filter)
     ctx.update({'object': collection})
     return TemplateResponse(request, 'collection/index.html', ctx)
+
+def ajax_selected_variant(request):
+    if request.method == "POST" and request.is_ajax():
+        sku = ProductVariant.objects.get(pk=request.POST["value"]).sku
+        if "(" in sku:
+            index = sku.index("(")
+            finsku = sku[:index]
+            sku_db = ProductVariant.objects.get(sku=finsku)
+            product_id = sku_db.product_id
+            slug = slugify(Product.objects.get(id=product_id).name)
+            response_url = slug + '-' + str(product_id)
+            return JsonResponse(response_url, safe=False)
+        else:
+            return JsonResponse(False, safe=False)
+    else:
+        return JsonResponse(False, safe=False)

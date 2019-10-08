@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'(?P<slug>[a-z0-9-_]+?)-(?P<product_id>[0-9]+)/add/$',
         views.product_add_to_cart, name='add-to-cart'),
     url(r'^collection/(?P<slug>[a-z0-9-_/]+?)-(?P<pk>[0-9]+)/$',
-        views.collection_index, name='collection')]
+        views.collection_index, name='collection'),
+
+    url(r'^ajax-selected-variant/$', views.ajax_selected_variant, name='ajax-selected-variant'),
+]

@@ -179,7 +179,7 @@
       {% endwith %}
     </div>
     <div class="col-md-6 col-12 product__info">
-      <h3 class="sku">{{ sku.sku }}</h3>
+      <h3 class="sku">{{ sku.0.sku }}</h3>
       <h1 class="product__info__name">
         {{ product.translated }}
       </h1>
@@ -249,9 +249,9 @@
         <div class="product__info__form-error">
           <small class="text-danger"></small>
         </div>
-        {% for variant in product.variants.all %}
-          <p><h6>{% trans "Availability:" context "Availability" %} <b>{{ variant.quantity }}</b> {% trans "pcs." context "Availability" %}</h6></p>
-        {% endfor %}
+{#        {% for variant in product.variants.all.0 %}#}
+          <p><h6>{% trans "Availability:" context "Availability" %} <b>{{ product.variants.all.0.quantity }}</b> {% trans "pcs." context "Availability" %}</h6></p>
+{#        {% endfor %}#}
       {% else %}
         <p class="alert alert-warning">
           {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
