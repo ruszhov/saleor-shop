@@ -33,7 +33,7 @@ window.onload=function() {
       data: data,
       success: function (response) {
         if (response != false) {
-          let full_url = (window.location.origin).toString() + '/' + (getCookie('django_language')).toString() + '/products/' + (response).toString();
+          let full_url = (window.location.origin).toString() + '/' + (document.documentElement.lang).toString() + '/products/' + (response).toString();
           location.replace(full_url);
         }}
       });
