@@ -15,18 +15,20 @@ class VariantChoiceField(forms.ModelChoiceField):
     display_gross = True
 
     def label_from_instance(self, obj):
-        variant_label = smart_text(obj)
+        variant_label = smart_text(obj.translated.name)
         price = obj.get_price(self.discounts, self.taxes)
         price = price.gross if self.display_gross else price.net
         label = pgettext_lazy(
             'Variant choice field label',
             '%(variant_label)s - %(price)s') % {
+                # 'variant_label': variant_label, 'price': amount(price)}
                 'variant_label': variant_label, 'price': amount(price)}
         return label
 
     def update_field_data(self, variants, discounts, taxes):
         """Initialize variant picker metadata."""
         self.queryset = variants
+        # print(self.queryset)
         self.discounts = discounts
         self.taxes = taxes
         self.empty_label = None
@@ -40,7 +42,6 @@ class VariantChoiceField(forms.ModelChoiceField):
         if self.queryset.count() == 1:
             self.widget = forms.HiddenInput(
                 {'value': variants.all()[0].pk})
-
 
 class ProductForm(AddToCartForm):
     variant = VariantChoiceField(queryset=None)

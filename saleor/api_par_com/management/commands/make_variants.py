@@ -62,9 +62,7 @@ class Command(BaseCommand):
                 new_dict[value].append(key)
             else:
                 new_dict[value] = [key]
-
         # print(kod_with_point)
-
         for k,v in new_dict.items():
             if len(v) == 1:
                 pass
@@ -73,7 +71,7 @@ class Command(BaseCommand):
                 for item in v:
                     count+=1
                     # product = ProductVariant.objects.get(sku=item[0])
-                    attr_id = Attribute.objects.get(name='Color').id
+                    # attr_id = Attribute.objects.get(name='Color').id
                     for sku_set in v:
                         if item != sku_set:
                             akv_sku = sku_set[0]+'('+str(count)+')'+'-'+sku_set[2]
@@ -126,7 +124,7 @@ class Command(BaseCommand):
                                 variant = ProductVariant(**variants_create)
                                 variant.save()
                                 display_format = "\nVariant, {}, has been created."
-                                print(display_format.format(variant))
+                                print(display_format.format(variant.id))
 
     def handle(self, *args, **options):
         """
