@@ -77,7 +77,7 @@ class Command(BaseCommand):
                     # print(idx)
                     # print('item:', item)
                     # print('v:', idx,v)
-                    for sku_set in v:
+                    for i, sku_set in enumerate(v):
                         if item != sku_set:
                             # print('sku_set', sku_set)
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
