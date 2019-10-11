@@ -74,10 +74,10 @@ class Command(BaseCommand):
                     # count+=1
                     # product = ProductVariant.objects.get(sku=item[0])
                     # attr_id = Attribute.objects.get(name='Color').id
-                    # print('item:', item)
+                    print('item:', item)
                     for sku_set in v:
                         if item != sku_set:
-                            # print('sku_set', sku_set)
+                            print('sku_set', sku_set)
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
                             product_id = item[2]
                             name = sku_set[1]
@@ -87,21 +87,21 @@ class Command(BaseCommand):
                             # avi = str(attr_val_id)
                             # out = '"' + ai + '"=>"' + avi + '"'
 
-                            # print("akv_sku:", akv_sku)
+                            print("akv_sku:", akv_sku)
                             # print("name:", name)
 
                             variants_update = {
                                 # "id": id,
-                                # "sku": akv_sku,
+                                "sku": akv_sku,
                                 "name": name,
-                                # "price_override": None,
-                                # "product_id": product_id,
-                                # "attributes": "",
-                                # "cost_price":None,
+                                "price_override": None,
+                                "product_id": product_id,
+                                "attributes": "",
+                                "cost_price": None,
                                 "quantity": 11111111,
-                                # "quantity_allocated": 0,
-                                # "track_inventory": False,
-                                # "weight": None
+                                "quantity_allocated": 0,
+                                "track_inventory": False,
+                                "weight": None
                             }
                             try:
                                 variant = ProductVariant.objects.get(sku=akv_sku)
