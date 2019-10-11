@@ -67,14 +67,18 @@ class Command(BaseCommand):
             if len(v) == 1:
                 pass
             else:
-                count=0
-                for item in v:
-                    count+=1
+                # print('len:', len(v))
+                # count=0
+                # for item in v:
+                for idx, item in enumerate(v):
+                    # count+=1
                     # product = ProductVariant.objects.get(sku=item[0])
                     # attr_id = Attribute.objects.get(name='Color').id
+                    # print('item:', item)
                     for sku_set in v:
                         if item != sku_set:
-                            akv_sku = sku_set[0]+'('+str(count)+')'+'-'+sku_set[2]
+                            # print('sku_set', sku_set)
+                            akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
                             product_id = item[2]
                             name = sku_set[1]
 
@@ -89,12 +93,12 @@ class Command(BaseCommand):
                             variants_update = {
                                 # "id": id,
                                 # "sku": akv_sku,
-                                # "name": name,
+                                "name": name,
                                 # "price_override": None,
                                 # "product_id": product_id,
                                 # "attributes": "",
                                 # "cost_price":None,
-                                # "quantity": 1000,
+                                "quantity": 11111111,
                                 # "quantity_allocated": 0,
                                 # "track_inventory": False,
                                 # "weight": None
@@ -104,7 +108,7 @@ class Command(BaseCommand):
                                 for key, value in variants_update.items():
                                     setattr(variant, key, value)
                                 variant.save()
-                                # display_format = "\nVariant, {}, has been edited."
+                                display_format = "\nVariant, {}, has been edited."
                                 # print(display_format.format(stock))
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
@@ -115,7 +119,7 @@ class Command(BaseCommand):
                                     "product_id": product_id,
                                     "attributes": "",
                                     "cost_price": None,
-                                    "quantity": 1000,
+                                    "quantity": 11111111,
                                     "quantity_allocated": 0,
                                     "track_inventory": False,
                                     "weight": None
