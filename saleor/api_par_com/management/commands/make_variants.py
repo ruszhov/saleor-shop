@@ -74,10 +74,12 @@ class Command(BaseCommand):
                     # count+=1
                     # product = ProductVariant.objects.get(sku=item[0])
                     # attr_id = Attribute.objects.get(name='Color').id
-                    print('item:', item)
+                    # print(idx)
+                    # print('item:', item)
+                    # print('v:', idx,v)
                     for sku_set in v:
                         if item != sku_set:
-                            print('sku_set', sku_set)
+                            # print('sku_set', sku_set)
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
                             product_id = item[2]
                             name = sku_set[1]
@@ -87,7 +89,7 @@ class Command(BaseCommand):
                             # avi = str(attr_val_id)
                             # out = '"' + ai + '"=>"' + avi + '"'
 
-                            print("akv_sku:", akv_sku)
+                            # print("akv_sku:", akv_sku)
                             # print("name:", name)
 
                             variants_update = {
@@ -98,7 +100,7 @@ class Command(BaseCommand):
                                 "product_id": product_id,
                                 "attributes": "",
                                 "cost_price": None,
-                                "quantity": 11111111,
+                                "quantity": 123456789,
                                 "quantity_allocated": 0,
                                 "track_inventory": False,
                                 "weight": None
@@ -109,7 +111,7 @@ class Command(BaseCommand):
                                     setattr(variant, key, value)
                                 variant.save()
                                 display_format = "\nVariant, {}, has been edited."
-                                print(display_format.format(variant.id))
+                                # print(display_format.format(variant.id))
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
                                     # "id": id,
@@ -119,7 +121,7 @@ class Command(BaseCommand):
                                     "product_id": product_id,
                                     "attributes": "",
                                     "cost_price": None,
-                                    "quantity": 11111111,
+                                    "quantity": 123456789,
                                     "quantity_allocated": 0,
                                     "track_inventory": False,
                                     "weight": None
@@ -129,6 +131,8 @@ class Command(BaseCommand):
                                 variant.save()
                                 display_format = "\nVariant, {}, has been created."
                                 print(display_format.format(variant.id))
+                        else:
+                            pass
 
     def handle(self, *args, **options):
         """
