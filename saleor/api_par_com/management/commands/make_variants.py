@@ -109,7 +109,7 @@ class Command(BaseCommand):
                                     setattr(variant, key, value)
                                 variant.save()
                                 display_format = "\nVariant, {}, has been edited."
-                                # print(display_format.format(stock))
+                                print(display_format.format(variant.id))
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
                                     # "id": id,
