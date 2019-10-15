@@ -84,11 +84,14 @@ class Command(BaseCommand):
                     while i < len(v):
                         sku_set = v[i]
                         if sku_set != item:
-                            print('sku_set:',sku_set)
+                            # print('sku_set:',sku_set)
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
-                            print('akv_sku:', akv_sku)
+                            # print('akv_sku:', akv_sku)
+                            # print('product_id:', product_id)
                             product_id = item[2]
                             name = sku_set[1]
+                            print(akv_sku, name, product_id)
+
                             variants_update = {
                                 # "id": id,
                                 "sku": akv_sku,
@@ -126,7 +129,7 @@ class Command(BaseCommand):
                                 # variants_update.update(variants_update)
                                 variant = ProductVariant(**variants_create)
                                 # variant.save()
-                                display_format = "\nVariant, {}, has been created. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                                display_format = "Variant, {}, has been created. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
                                 print(display_format.format(akv_sku))
                         else:
                             pass
