@@ -62,7 +62,7 @@ class Command(BaseCommand):
                 new_dict[value].append(key)
             else:
                 new_dict[value] = [key]
-        print(kod_with_point)
+        # print(kod_with_point)
         for k,v in new_dict.items():
             if len(v) == 1:
                 pass
@@ -75,64 +75,60 @@ class Command(BaseCommand):
                     # product = ProductVariant.objects.get(sku=item[0])
                     # attr_id = Attribute.objects.get(name='Color').id
                     # print(idx)
-                    print('item:', item)
-                    print('v:', idx,v)
-                    for i, sku_set in enumerate(v):
-                        if item is not sku_set:
-                            print('sku_set', sku_set)
+                    # print('item:', item)
+                    # print('v:', idx,v)
+                    # for sku_set in v:
+                    #     if sku_set != item:
+                    #         print(sku_set)
+                    i = 0
+                    while i < len(v):
+                        sku_set = v[i]
+                        if sku_set != item:
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
                             product_id = item[2]
                             name = sku_set[1]
-
-                            # attr_val_id = AttributeValue.objects.get(name=name).id
-                            # ai = str(attr_id)
-                            # avi = str(attr_val_id)
-                            # out = '"' + ai + '"=>"' + avi + '"'
-
-                            # print("akv_sku:", akv_sku)
-                            # print("name:", name)
-
-                        #     variants_update = {
-                        #         # "id": id,
-                        #         "sku": akv_sku,
-                        #         "name": name,
-                        #         "price_override": None,
-                        #         "product_id": product_id,
-                        #         "attributes": "",
-                        #         "cost_price": None,
-                        #         "quantity": 123456789,
-                        #         "quantity_allocated": 0,
-                        #         "track_inventory": False,
-                        #         "weight": None
-                        #     }
-                        #     try:
-                        #         variant = ProductVariant.objects.get(sku=akv_sku)
-                        #         for key, value in variants_update.items():
-                        #             setattr(variant, key, value)
-                        #         variant.save()
-                        #         display_format = "\nVariant, {}, has been edited."
-                        #         # print(display_format.format(variant.id))
-                        #     except ProductVariant.DoesNotExist:
-                        #         variants_create = {
-                        #             # "id": id,
-                        #             "sku": akv_sku,
-                        #             "name": name,
-                        #             "price_override": None,
-                        #             "product_id": product_id,
-                        #             "attributes": "",
-                        #             "cost_price": None,
-                        #             "quantity": 123456789,
-                        #             "quantity_allocated": 0,
-                        #             "track_inventory": False,
-                        #             "weight": None
-                        #         }
-                        #         variants_update.update(variants_update)
-                        #         variant = ProductVariant(**variants_create)
-                        #         variant.save()
-                        #         display_format = "\nVariant, {}, has been created."
-                        #         print(display_format.format(variant.id))
-                        # else:
-                        #     pass
+                            variants_update = {
+                                # "id": id,
+                                "sku": akv_sku,
+                                "name": name,
+                                "price_override": None,
+                                "product_id": product_id,
+                                "attributes": "",
+                                "cost_price": None,
+                                "quantity": 22222222,
+                                "quantity_allocated": 0,
+                                "track_inventory": False,
+                                "weight": None
+                            }
+                            try:
+                                variant = ProductVariant.objects.get(sku=akv_sku)
+                                for key, value in variants_update.items():
+                                    setattr(variant, key, value)
+                                variant.save()
+                                display_format = "\nVariant, {}, has been edited."
+                                # print(display_format.format(variant.id))
+                            except ProductVariant.DoesNotExist:
+                                variants_create = {
+                                    # "id": id,
+                                    "sku": akv_sku,
+                                    "name": name,
+                                    "price_override": None,
+                                    "product_id": product_id,
+                                    "attributes": "",
+                                    "cost_price": None,
+                                    "quantity": 22222222,
+                                    "quantity_allocated": 0,
+                                    "track_inventory": False,
+                                    "weight": None
+                                }
+                                variants_update.update(variants_update)
+                                variant = ProductVariant(**variants_create)
+                                variant.save()
+                                display_format = "\nVariant, {}, has been created."
+                                print(display_format.format(variant.id))
+                        else:
+                            pass
+                        i += 1
 
     def handle(self, *args, **options):
         """
