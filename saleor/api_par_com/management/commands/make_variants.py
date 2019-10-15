@@ -67,7 +67,7 @@ class Command(BaseCommand):
             if len(v) == 1:
                 pass
             else:
-                # print('len:', len(v))
+                print('len:', len(v))
                 # count=0
                 # for item in v:
                 for idx, item in enumerate(v):
@@ -75,8 +75,8 @@ class Command(BaseCommand):
                     # product = ProductVariant.objects.get(sku=item[0])
                     # attr_id = Attribute.objects.get(name='Color').id
                     # print(idx)
-                    # print('item:', item)
-                    # print('v:', idx,v)
+                    print('item:', item)
+                    print('v:', idx,v)
                     # for sku_set in v:
                     #     if sku_set != item:
                     #         print(sku_set)
@@ -84,7 +84,9 @@ class Command(BaseCommand):
                     while i < len(v):
                         sku_set = v[i]
                         if sku_set != item:
+                            print('sku_set:',sku_set)
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
+                            print('akv_sku:', akv_sku)
                             product_id = item[2]
                             name = sku_set[1]
                             variants_update = {
@@ -102,9 +104,9 @@ class Command(BaseCommand):
                             }
                             try:
                                 variant = ProductVariant.objects.get(sku=akv_sku)
-                                for key, value in variants_update.items():
-                                    setattr(variant, key, value)
-                                variant.save()
+                                # for key, value in variants_update.items():
+                                #     setattr(variant, key, value)
+                                # variant.save()
                                 display_format = "\nVariant, {}, has been edited."
                                 # print(display_format.format(variant.id))
                             except ProductVariant.DoesNotExist:
@@ -121,11 +123,11 @@ class Command(BaseCommand):
                                     "track_inventory": False,
                                     "weight": None
                                 }
-                                variants_update.update(variants_update)
+                                # variants_update.update(variants_update)
                                 variant = ProductVariant(**variants_create)
-                                variant.save()
-                                display_format = "\nVariant, {}, has been created."
-                                print(display_format.format(variant.id))
+                                # variant.save()
+                                display_format = "\nVariant, {}, has been created. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                                print(display_format.format(akv_sku))
                         else:
                             pass
                         i += 1
