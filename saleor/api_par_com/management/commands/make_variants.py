@@ -67,30 +67,14 @@ class Command(BaseCommand):
             if len(v) == 1:
                 pass
             else:
-                print('len:', len(v))
-                # count=0
-                # for item in v:
                 for idx, item in enumerate(v):
-                    # count+=1
-                    # product = ProductVariant.objects.get(sku=item[0])
-                    # attr_id = Attribute.objects.get(name='Color').id
-                    # print(idx)
-                    print('item:', item)
-                    print('v:', idx,v)
-                    # for sku_set in v:
-                    #     if sku_set != item:
-                    #         print(sku_set)
                     i = 0
                     while i < len(v):
                         sku_set = v[i]
                         if sku_set != item:
-                            # print('sku_set:',sku_set)
                             akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
-                            # print('akv_sku:', akv_sku)
-                            # print('product_id:', product_id)
                             product_id = item[2]
                             name = sku_set[1]
-                            print(akv_sku, name, product_id)
 
                             variants_update = {
                                 # "id": id,
@@ -100,18 +84,18 @@ class Command(BaseCommand):
                                 "product_id": product_id,
                                 "attributes": "",
                                 "cost_price": None,
-                                "quantity": 22222222,
+                                "quantity": 123456789,
                                 "quantity_allocated": 0,
                                 "track_inventory": False,
                                 "weight": None
                             }
                             try:
-                                variant = ProductVariant.objects.get(sku=akv_sku)
-                                # for key, value in variants_update.items():
-                                #     setattr(variant, key, value)
-                                # variant.save()
+                                variant = ProductVariant.objects.get(name=name, product_id=product_id)
+                                for key, value in variants_update.items():
+                                    setattr(variant, key, value)
+                                variant.save()
                                 display_format = "\nVariant, {}, has been edited."
-                                # print(display_format.format(variant.id))
+                                print(display_format.format(variant.id))
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
                                     # "id": id,
@@ -121,15 +105,15 @@ class Command(BaseCommand):
                                     "product_id": product_id,
                                     "attributes": "",
                                     "cost_price": None,
-                                    "quantity": 22222222,
+                                    "quantity": 123456789,
                                     "quantity_allocated": 0,
                                     "track_inventory": False,
                                     "weight": None
                                 }
-                                # variants_update.update(variants_update)
+                                variants_update.update(variants_update)
                                 variant = ProductVariant(**variants_create)
-                                # variant.save()
-                                display_format = "Variant, {}, has been created. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                                variant.save()
+                                display_format = "Variant, {}, has been created."
                                 print(display_format.format(akv_sku))
                         else:
                             pass
