@@ -78,7 +78,7 @@ class Command(BaseCommand):
 
                             variants_update = {
                                 # "id": id,
-                                "sku": akv_sku,
+                                # "sku": akv_sku,
                                 "name": name,
                                 "price_override": None,
                                 "product_id": product_id,
