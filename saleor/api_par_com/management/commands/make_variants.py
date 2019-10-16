@@ -101,8 +101,8 @@ class Command(BaseCommand):
                                     # print(display_format.format(variant.id))
                                 except MultipleObjectsReturned:
                                     multi = ProductVariant.objects.filter(name=name, product_id=product_id)
-                                    for i in multi:
-                                        print(i.id, i.name, i.product_id)
+                                    for dupl in multi:
+                                        print(dupl.id, dupl.name, dupl.product_id)
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
                                     # "id": id,
