@@ -18,6 +18,7 @@ from prices import Money
 from django.contrib.postgres.fields import HStoreField
 from itertools import groupby
 import itertools
+from django.core.exceptions import MultipleObjectsReturned
 
 class Command(BaseCommand):
 
@@ -90,12 +91,18 @@ class Command(BaseCommand):
                                 # "weight": None
                             }
                             try:
-                                variant = ProductVariant.objects.get(name=name, product_id=product_id)
-                                for key, value in variants_update.items():
-                                    setattr(variant, key, value)
-                                variant.save()
-                                display_format = "\nVariant, {}, has been edited."
-                                # print(display_format.format(variant.id))
+                                try:
+
+                                    variant = ProductVariant.objects.get(name=name, product_id=product_id)
+                                    for key, value in variants_update.items():
+                                        setattr(variant, key, value)
+                                    variant.save()
+                                    display_format = "\nVariant, {}, has been edited."
+                                    # print(display_format.format(variant.id))
+                                except MultipleObjectsReturned:
+                                    multi = ProductVariant.objects.filter(name=name, product_id=product_id)
+                                    for i in multi:
+                                        print(i.id, i.name, i.product_id)
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
                                     # "id": id,
