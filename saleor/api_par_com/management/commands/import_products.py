@@ -201,7 +201,7 @@ class Command(BaseCommand):
                                                 "weight": weight
                                             }
                                             try:
-                                                stock = ProductVariant.objects.get(sku=sku)
+                                                stock = ProductVariant.objects.exclude(quantity=123456789).get(sku=sku, product_id=id)
                                                 for key, value in stocks_update.items():
                                                     setattr(stock, key, value)
                                                 stock.save()

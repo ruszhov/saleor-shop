@@ -92,8 +92,7 @@ class Command(BaseCommand):
                             }
                             try:
                                 try:
-
-                                    variant = ProductVariant.objects.get(name=name, product_id=product_id)
+                                    variant = ProductVariant.objects.get(name=name, product_id=product_id, quantity=123456789)
                                     for key, value in variants_update.items():
                                         setattr(variant, key, value)
                                     variant.save()

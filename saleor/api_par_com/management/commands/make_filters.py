@@ -223,7 +223,7 @@ class Command(BaseCommand):
                     print(display_format.format(attribute))
 
         attribute = Attribute.objects.get(name="Color")
-        variants = ProductVariant.objects.all().exclude(sku__contains="-")
+        variants = ProductVariant.objects.all().exclude(sku__contains="-", quantity=123456789)
         for variant in variants:
             attr_val_id = AttributeValue.objects.get(name=variant.name).id
             ai = str(attr_id)
