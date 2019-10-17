@@ -19,6 +19,7 @@ from django.contrib.postgres.fields import HStoreField
 from itertools import groupby
 import itertools
 from django.core.exceptions import MultipleObjectsReturned
+from django.db import IntegrityError
 
 class Command(BaseCommand):
 
@@ -101,7 +102,7 @@ class Command(BaseCommand):
                                 except MultipleObjectsReturned:
                                     multi = ProductVariant.objects.filter(name=name, product_id=product_id)
                                     for dupl in multi:
-                                        print(dupl.id, dupl.name, dupl.product_id)
+                                        print('Duplicated:', dupl.id, dupl.name, dupl.product_id)
                             except ProductVariant.DoesNotExist:
                                 variants_create = {
                                     # "id": id,
@@ -116,11 +117,16 @@ class Command(BaseCommand):
                                     "track_inventory": False,
                                     "weight": None
                                 }
-                                variants_update.update(variants_update)
-                                variant = ProductVariant(**variants_create)
-                                variant.save()
-                                display_format = "Variant, {}, has been created."
-                                print(display_format.format(akv_sku))
+                                try:
+                                    variants_create.update(variants_update)
+                                    variant = ProductVariant(**variants_create)
+                                    variant.save()
+                                    display_format = "Variant, {}, has been created."
+                                    print(display_format.format(akv_sku))
+                                except IntegrityError as e:
+                                    if 'unique constraint' in e.message:
+                                        print(variant)
+
                         else:
                             pass
                         i += 1
