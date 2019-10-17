@@ -124,7 +124,8 @@ class Command(BaseCommand):
                                     display_format = "Variant, {}, has been created."
                                     print(display_format.format(akv_sku))
                                 except IntegrityError as e:
-                                        print('constraint failed:',e.variant)
+                                        print('constraint failed:',e)
+                                        print('constraint failed variant:', variant)
 
                         else:
                             pass
