@@ -6245,3 +6245,8 @@ msgstr "Dostępność:"
 msgctxt "Availability"
 msgid "pcs."
 msgstr "szt."
+
+#: templates/product/details.html:236
+msgctxt "Variant"
+msgid "Variant"
+msgstr "Wariant"

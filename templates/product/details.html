@@ -233,7 +233,8 @@
           {% else %}
             <form id="product-form" role="form" class="product-form clearfix" method="post" action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}" novalidate>
               {% csrf_token %}
-              {% bootstrap_field form.variant %}
+              {% trans "Variant" context "Variant" %}<p>
+              {% bootstrap_field form.variant show_label=False%}
               <div class="product__info__quantity">
                 {% bootstrap_field form.quantity %}
               </div>
@@ -249,9 +250,13 @@
         <div class="product__info__form-error">
           <small class="text-danger"></small>
         </div>
-{#        {% for variant in product.variants.all.0 %}#}
-          <p><h6>{% trans "Availability:" context "Availability" %} <b>{{ product.variants.all.0.quantity }}</b> {% trans "pcs." context "Availability" %}</h6></p>
-{#        {% endfor %}#}
+          <p><h6>{% trans "Availability:" context "Availability" %} <b>
+          {% for variant in product.variants.all %}
+            {% if variant.quantity != 123456789 %}
+              {{ variant.quantity }}
+            {% endif %}
+          {% endfor %}
+          </b>{% trans "pcs." context "Availability" %}</h6></p>
       {% else %}
         <p class="alert alert-warning">
           {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
