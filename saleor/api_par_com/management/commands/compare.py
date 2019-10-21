@@ -58,11 +58,14 @@ class Command(BaseCommand):
             print("All products are synchronized!")
         else:
             diffrent = Diff(file_ids, db_ids)
+            print('diffrent:', diffrent)
 
             print("These products are not on the site PAR Bakula:")
             for i in diffrent:
-                stock = ProductVariant.objects.get(product_id=i)
-                print(stock.sku)
+                stock = ProductVariant.objects.filter(product_id=i)
+                for sku in stock:
+                    print(sku.sku)
+                    print('product_id:',i)
 
     def handle(self, *args, **options):
         """
