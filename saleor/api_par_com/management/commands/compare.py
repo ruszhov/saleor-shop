@@ -58,14 +58,68 @@ class Command(BaseCommand):
             print("All products are synchronized!")
         else:
             diffrent = Diff(file_ids, db_ids)
-            print('diffrent:', diffrent)
+            # print('diffrent:', diffrent)
 
             print("These products are not on the site PAR Bakula:")
             for i in diffrent:
                 stock = ProductVariant.objects.filter(product_id=i)
                 for sku in stock:
                     print(sku.sku)
-                    print('product_id:',i)
+                    # print('product_id:',i)
+
+        #m2m comparing
+
+        for data_object in data['products']['product']:
+            sale = data_object.get('wyprzedaz', None)
+            if sale == 'false':
+                category_dict = data_object.get('kategorie', None)
+                product_id = data_object.get('id', None)
+                # print(category_dict)
+                for cat, v in category_dict.items():
+                    if type(v) is dict:
+                        category_list = []
+                        cat_id = v['@id']
+                        categ = Category.objects.get(id=cat_id)
+                        category_list.append(int(cat_id))
+                        prod = Product.objects.get(id=product_id)
+                        m2m = prod.category.all()
+                        m2m_list = []
+                        for m in m2m:
+                            m2m_list.append(m.id)
+                        if category_list == m2m_list:
+                            pass
+                        else:
+                            diffrent = Diff(category_list, m2m_list)
+                            if not diffrent:
+                                pass
+                            else:
+                                print('product_id:',product_id)
+                                for i in diffrent:
+                                    product = Product.objects.get(pk=product_id)
+                                    diffrent_category = Category.objects.get(pk=i)
+                                    m2m = product.category.remove(diffrent_category)
+                    else:
+                        category_list = []
+                        for d in v:
+                            cat_id = d['@id']
+                            category_list.append(int(cat_id))
+                            categ = Category.objects.get(id=cat_id)
+                            prod = Product.objects.get(id=product_id)
+                            m2m = prod.category.all()
+                            m2m_list = []
+                            for m in m2m:
+                                m2m_list.append(m.id)
+                            if category_list == m2m_list:
+                                pass
+                            else:
+                                diffrent = Diff(category_list, m2m_list)
+                                if not diffrent:
+                                    pass
+                                else:
+                                    for i in diffrent:
+                                        product = Product.objects.get(pk=product_id)
+                                        diffrent_category = Category.objects.get(pk=i)
+                                        m2m = product.category.remove(diffrent_category)
 
     def handle(self, *args, **options):
         """
