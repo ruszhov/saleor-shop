@@ -236,25 +236,26 @@ class Command(BaseCommand):
                             ####            m2m node-product adding                      ####
                             #################################################################
 
-                            category_dict = data_object.get('kategorie', None)
-                            # print(category_dict)
-                            for cat, v in category_dict.items():
-                                if type(v) is dict:
-                                    # print(v)
-                                    cat_id = v['@id']
-                                    categ = Category.objects.get(id=cat_id)
-                                    prod = Product.objects.get(id=id)
-                                    m2m = prod.category.add(categ)
-
-                                else:
-                                    # print(v)
-                                    for d in v:
-                                        d['prod_id'] = id
-                                        cat_id = d['@id']
-                                        # print(cat_id, id)
-                                        categ = Category.objects.get(id = cat_id)
-                                        prod = Product.objects.get(id = id)
+                            if sale == 'false':
+                                category_dict = data_object.get('kategorie', None)
+                                # print(category_dict)
+                                for cat, v in category_dict.items():
+                                    if type(v) is dict:
+                                        # print(v)
+                                        cat_id = v['@id']
+                                        categ = Category.objects.get(id=cat_id)
+                                        prod = Product.objects.get(id=id)
                                         m2m = prod.category.add(categ)
+
+                                    else:
+                                        # print(v)
+                                        for d in v:
+                                            d['prod_id'] = id
+                                            cat_id = d['@id']
+                                            # print(cat_id, id)
+                                            categ = Category.objects.get(id = cat_id)
+                                            prod = Product.objects.get(id = id)
+                                            m2m = prod.category.add(categ)
 
         #################################################################
         ####            m2m node-product adding                      ####
@@ -284,4 +285,3 @@ class Command(BaseCommand):
         Call the function to import data
         """
         self.import_products()
-

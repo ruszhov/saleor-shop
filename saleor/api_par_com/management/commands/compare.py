@@ -67,8 +67,7 @@ class Command(BaseCommand):
                     print(sku.sku)
                     # print('product_id:',i)
 
-        #m2m comparing
-
+        #m2m comparing and removing extra if exists
         for data_object in data['products']['product']:
             sale = data_object.get('wyprzedaz', None)
             if sale == 'false':
@@ -105,21 +104,25 @@ class Command(BaseCommand):
                             category_list.append(int(cat_id))
                             categ = Category.objects.get(id=cat_id)
                             prod = Product.objects.get(id=product_id)
-                            m2m = prod.category.all()
-                            m2m_list = []
-                            for m in m2m:
-                                m2m_list.append(m.id)
-                            if category_list == m2m_list:
+                        m2m = prod.category.all()
+                        m2m_list = []
+                        for m in m2m:
+                            m2m_list.append(m.id)
+                        # print('product_id:', product_id)
+                        # print('category_list:', category_list)
+                        # print('m2m_list:', m2m_list)
+                        if category_list == m2m_list:
+                            pass
+                        else:
+                            diffrent = Diff(category_list, m2m_list)
+                            if not diffrent:
                                 pass
                             else:
-                                diffrent = Diff(category_list, m2m_list)
-                                if not diffrent:
-                                    pass
-                                else:
-                                    for i in diffrent:
-                                        product = Product.objects.get(pk=product_id)
-                                        diffrent_category = Category.objects.get(pk=i)
-                                        m2m = product.category.remove(diffrent_category)
+                                print('product_id', product_id)
+                                for i in diffrent:
+                                    product = Product.objects.get(pk=product_id)
+                                    diffrent_category = Category.objects.get(pk=i)
+                                    m2m = product.category.remove(diffrent_category)
 
     def handle(self, *args, **options):
         """
