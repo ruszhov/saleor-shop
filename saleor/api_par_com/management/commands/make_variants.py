@@ -104,29 +104,45 @@ class Command(BaseCommand):
                                     for dupl in multi:
                                         print('Duplicated:', dupl.id, dupl.name, dupl.product_id)
                             except ProductVariant.DoesNotExist:
-                                variants_create = {
-                                    # "id": id,
-                                    "sku": akv_sku,
-                                    "name": name,
-                                    "price_override": None,
-                                    "product_id": product_id,
-                                    "attributes": "",
-                                    "cost_price": None,
-                                    "quantity": 123456789,
-                                    "quantity_allocated": 0,
-                                    "track_inventory": False,
-                                    "weight": None
-                                }
                                 try:
+                                    variants_create = {
+                                        # "id": id,
+                                        "sku": akv_sku,
+                                        "name": name,
+                                        "price_override": None,
+                                        "product_id": product_id,
+                                        "attributes": "",
+                                        "cost_price": None,
+                                        "quantity": 123456789,
+                                        "quantity_allocated": 0,
+                                        "track_inventory": False,
+                                        "weight": None
+                                    }
                                     variants_create.update(variants_update)
                                     variant = ProductVariant(**variants_create)
                                     variant.save()
                                     display_format = "Variant, {}, has been created."
                                     print(display_format.format(akv_sku))
-                                except IntegrityError as e:
-                                        print('constraint failed:',e)
-                                        print('constraint failed variant:', variant)
-
+                                except IntegrityError:
+                                    akv_sku = sku_set[0] + '(' + str(idx + 2) + ')' + '-' + sku_set[2]
+                                    variants_create_ie = {
+                                        # "id": id,
+                                        "sku": akv_sku,
+                                        "name": name,
+                                        "price_override": None,
+                                        "product_id": product_id,
+                                        "attributes": "",
+                                        "cost_price": None,
+                                        "quantity": 123456789,
+                                        "quantity_allocated": 0,
+                                        "track_inventory": False,
+                                        "weight": None
+                                    }
+                                    variants_create_ie.update(variants_update)
+                                    variant = ProductVariant(**variants_create_ie)
+                                    variant.save()
+                                    display_format = "Variant, {}, has been created."
+                                    print(display_format.format(akv_sku))
                         else:
                             pass
                         i += 1
