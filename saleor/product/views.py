@@ -170,7 +170,7 @@ def category_index(request, slug, category_id):
     # Check for subcategories
     categories = category.get_descendants(include_self=True)
     products = products_for_products_list(user=request.user).filter(
-        category__in=categories).order_by('name')
+        category__in=categories).order_by('name').distinct()
     for product in products:
         attributes = product.product_type.product_attributes.all()
     product_filter = ProductCategoryFilter(
