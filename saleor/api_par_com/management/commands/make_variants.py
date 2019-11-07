@@ -92,8 +92,8 @@ class Command(BaseCommand):
                                 "weight": None
                             }
                             try:
-                                variant = ProductVariant.objects.get(name=name, product_id=product_id, quantity=123456789)
-                                # variant = ProductVariant.objects.get(sku=akv_sku)
+                                # variant = ProductVariant.objects.get(name=name, product_id=product_id, quantity=123456789)
+                                variant = ProductVariant.objects.get(sku=akv_sku)
                                 for key, value in variants_update.items():
                                     setattr(variant, key, value)
                                 variant.save()
