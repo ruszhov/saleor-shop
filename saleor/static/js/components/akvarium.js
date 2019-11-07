@@ -40,7 +40,9 @@ window.onload=function() {
     }, false);
     // Making selected options like current product variant
     let dataString = JSON.parse(selector.dataset.images);
-    let first_key = Object.keys(dataString)[0];
+    // let first_key = Object.keys(dataString)[0];
+    let sku = document.getElementsByClassName('sku')[0];
+    first_key = sku.dataset.skuId;
     selector.value = first_key;
   };
 }

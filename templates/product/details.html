@@ -179,7 +179,7 @@
       {% endwith %}
     </div>
     <div class="col-md-6 col-12 product__info">
-      <h3 class="sku">{{ sku.0.sku }}</h3>
+      <h3 class="sku" data-sku-id={{ sku.0.pk }}>{{ sku.0.sku }}</h3>
       <h1 class="product__info__name">
         {{ product.translated }}
       </h1>

@@ -74,75 +74,50 @@ class Command(BaseCommand):
                     while i < len(v):
                         sku_set = v[i]
                         if sku_set != item:
-                            akv_sku = sku_set[0]+'('+str(idx+1)+')'+'-'+sku_set[2]
+                            main_variant = ProductVariant.objects.get(sku=item[0]).id
+                            akv_sku = sku_set[0]+'('+str(main_variant)+')'+'-'+sku_set[2]+'-AKV'
                             product_id = item[2]
                             name = sku_set[1]
-
                             variants_update = {
                                 # "id": id,
-                                # "sku": akv_sku,
-                                # "name": name,
-                                # "price_override": None,
-                                # "product_id": product_id,
-                                # "attributes": "",
-                                # "cost_price": None,
-                                # "quantity": 123456789,
-                                # "quantity_allocated": 0,
-                                # "track_inventory": False,
-                                # "weight": None
+                                "sku": akv_sku,
+                                "name": name,
+                                "price_override": None,
+                                "product_id": product_id,
+                                "attributes": "",
+                                "cost_price": None,
+                                "quantity": 123456789,
+                                "quantity_allocated": 0,
+                                "track_inventory": False,
+                                "weight": None
                             }
                             try:
-                                try:
-                                    variant = ProductVariant.objects.get(name=name, product_id=product_id, quantity=123456789)
-                                    for key, value in variants_update.items():
-                                        setattr(variant, key, value)
-                                    variant.save()
-                                    display_format = "\nVariant, {}, has been edited."
-                                    # print(display_format.format(variant.id))
-                                except MultipleObjectsReturned:
-                                    multi = ProductVariant.objects.filter(name=name, product_id=product_id)
-                                    for dupl in multi:
-                                        print('Duplicated:', dupl.id, dupl.name, dupl.product_id)
+                                variant = ProductVariant.objects.get(name=name, product_id=product_id, quantity=123456789)
+                                # variant = ProductVariant.objects.get(sku=akv_sku)
+                                for key, value in variants_update.items():
+                                    setattr(variant, key, value)
+                                variant.save()
+                                display_format = "\nVariant, {}, has been edited."
+                                # print(display_format.format(variant.id))
                             except ProductVariant.DoesNotExist:
-                                try:
-                                    variants_create = {
-                                        # "id": id,
-                                        "sku": akv_sku,
-                                        "name": name,
-                                        "price_override": None,
-                                        "product_id": product_id,
-                                        "attributes": "",
-                                        "cost_price": None,
-                                        "quantity": 123456789,
-                                        "quantity_allocated": 0,
-                                        "track_inventory": False,
-                                        "weight": None
-                                    }
-                                    variants_create.update(variants_update)
-                                    variant = ProductVariant(**variants_create)
-                                    variant.save()
-                                    display_format = "Variant, {}, has been created."
-                                    print(display_format.format(akv_sku))
-                                except IntegrityError:
-                                    akv_sku = sku_set[0] + '(' + str(idx + 2) + ')' + '-' + sku_set[2]
-                                    variants_create_ie = {
-                                        # "id": id,
-                                        "sku": akv_sku,
-                                        "name": name,
-                                        "price_override": None,
-                                        "product_id": product_id,
-                                        "attributes": "",
-                                        "cost_price": None,
-                                        "quantity": 123456789,
-                                        "quantity_allocated": 0,
-                                        "track_inventory": False,
-                                        "weight": None
-                                    }
-                                    variants_create_ie.update(variants_update)
-                                    variant = ProductVariant(**variants_create_ie)
-                                    variant.save()
-                                    display_format = "Variant, {}, has been created."
-                                    print(display_format.format(akv_sku))
+                                variants_create = {
+                                    # "id": id,
+                                    "sku": akv_sku,
+                                    "name": name,
+                                    "price_override": None,
+                                    "product_id": product_id,
+                                    "attributes": "",
+                                    "cost_price": None,
+                                    "quantity": 123456789,
+                                    "quantity_allocated": 0,
+                                    "track_inventory": False,
+                                    "weight": None
+                                }
+                                variants_create.update(variants_update)
+                                variant = ProductVariant(**variants_create)
+                                variant.save()
+                                display_format = "Variant, {}, has been created."
+                                print(display_format.format(akv_sku))
                         else:
                             pass
                         i += 1
