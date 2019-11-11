@@ -58,7 +58,7 @@ class Command(BaseCommand):
             print("All products are synchronized!")
         else:
             diffrent = Diff(file_ids, db_ids)
-            # print('diffrent:', diffrent)
+            print('diffrent:', diffrent)
 
             print("These products are not on the site PAR Bakula:")
             for i in diffrent:
