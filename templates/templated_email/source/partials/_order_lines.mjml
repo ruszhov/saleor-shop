@@ -6,34 +6,6 @@
   <mj-column>
     <mj-table>
       <tfoot>
-        <tr>
-          <td colspan="3" style="text-align: right;">
-            {% trans "Subtotal" context "E-mail order lines summary table" %}
-          </td>
-          <td style="text-align: right;">
-            {% price order.get_subtotal display_gross=order.display_gross_prices html=False %}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3" style="text-align: right;">
-            {% trans "Shipping" context "E-mail order lines summary table" %}
-          </td>
-          <td style="text-align: right;">
-            {% price order.shipping_price display_gross=order.display_gross_prices html=False %}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3" style="text-align: right;">
-            {% if order.display_gross_prices %}
-              {% trans "Taxes (included)" context "E-mail order lines summary table" %}
-            {% else %}
-              {% trans "Taxes" context "E-mail order lines summary table" %}
-            {% endif %}
-          </td>
-          <td style="text-align: right;">
-            {% price order.total.tax html=False %}
-          </td>
-        </tr>
         {% if order.discount_amount %}
           <tr>
             <td colspan="3" style="text-align: right;">
@@ -49,7 +21,7 @@
             <strong>{% trans "Total" context "E-mail order lines summary table" %}</strong>
           </td>
           <td style="text-align: right;">
-            <strong>{% price order.total display_gross=order.display_gross_prices html=False %}</strong>
+            <strong>{% price order.get_subtotal display_gross=order.display_gross_prices html=False %}</strong>
           </td>
         </tr>
       </tfoot>
@@ -76,3 +48,4 @@
     </mj-table>
   </mj-column>
 </mj-section>
+

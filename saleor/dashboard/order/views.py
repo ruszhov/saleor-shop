@@ -18,7 +18,7 @@ from ...core.utils.taxes import get_taxes_for_address
 from ...order import OrderEvents, OrderEventsEmails, OrderStatus
 from ...order.emails import (
     send_fulfillment_confirmation, send_fulfillment_update,
-    send_order_confirmation)
+    send_order_confirmation, send_manager_confirmation)
 from ...order.models import Fulfillment, FulfillmentLine, Order
 from ...order.utils import update_order_prices, update_order_status
 from ...shipping.models import ShippingMethod
@@ -83,6 +83,7 @@ def create_order_from_draft(request, order_pk):
         messages.success(request, msg)
         if form.cleaned_data.get('notify_customer'):
             send_order_confirmation.delay(order.pk)
+            send_manager_confirmation.delay(order.pk)
             order.events.create(
                 parameters={
                     'email': order.get_user_current_email(),

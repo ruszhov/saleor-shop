@@ -6250,3 +6250,18 @@ msgstr "szt."
 msgctxt "Variant"
 msgid "Variant"
 msgstr "Wariant"
+
+#: templates/templated_email/order/confirm_order_manager.email:24 templates/templated_email/source/confirm_order_manager.mjml:28
+msgctxt "Order manager confirmation"
+msgid "Customer note:"
+msgstr "Uwaga klienta:"
+
+#: templates/templated_email/source/confirm_order_manager.mjml:17
+#, python-format
+msgctxt "Order manager confirmation"
+msgid ""
+"We have new order. Below is the list of ordered products. To see payment details please visit: <a href=\"%(order_details_url)s\">"
+"%(order_details_url)s</a>"
+msgstr ""
+"Mamy nowe zamówienie. Poniżej znajduje się lista zamawianych produktów. Aby zobaczyć szczegóły płatności, odwiedź: <a href="
+"\"%(order_details_url)s\">%(order_details_url)s</a>"

@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-18 07:39-0500\n"
-"PO-Revision-Date: 2019-09-26 16:28+0300\n"
+"PO-Revision-Date: 2019-11-19 16:13+0200\n"
 "Last-Translator: Roman Storozhuk <roman.storozhuk@gmail.com>, 2019\n"
 "Language-Team: Ukrainian (https://www.transifex.com/mirumee/teams/34782/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -2332,10 +2332,9 @@ msgstr "Оновити"
 
 #: templates/dashboard/category/form.html:127 templates/dashboard/discount/sale/form.html:123 templates/dashboard/discount/voucher/form.html:133
 #: templates/dashboard/menu/form.html:68 templates/dashboard/menu/item/form.html:90 templates/dashboard/product/attribute/form.html:87
-#: templates/dashboard/product/attribute/values/form.html:86 templates/dashboard/product/form.html:144
-#: templates/dashboard/product/product_image/form.html:87 templates/dashboard/product/product_type/form.html:121
-#: templates/dashboard/product/product_variant/form.html:121 templates/dashboard/shipping/form.html:87 templates/dashboard/shipping/methods/form.html:88
-#: templates/dashboard/sites/authorization_keys/form.html:79
+#: templates/dashboard/product/attribute/values/form.html:86 templates/dashboard/product/form.html:144 templates/dashboard/product/product_image/form.html:87
+#: templates/dashboard/product/product_type/form.html:121 templates/dashboard/product/product_variant/form.html:121 templates/dashboard/shipping/form.html:87
+#: templates/dashboard/shipping/methods/form.html:88 templates/dashboard/sites/authorization_keys/form.html:79
 msgctxt "Dashboard create action"
 msgid "Create"
 msgstr "Створити"
@@ -3205,9 +3204,9 @@ msgid "Storefront Menus"
 msgstr "Меню магазину"
 
 #: templates/dashboard/menu/list.html:97 templates/dashboard/product/attribute/form.html:80 templates/dashboard/product/attribute/values/form.html:82
-#: templates/dashboard/product/form.html:137 templates/dashboard/product/product_image/form.html:83
-#: templates/dashboard/product/product_variant/form.html:114 templates/dashboard/shipping/form.html:80 templates/dashboard/shipping/list.html:104
-#: templates/dashboard/shipping/methods/form.html:84 templates/dashboard/sites/authorization_keys/form.html:75
+#: templates/dashboard/product/form.html:137 templates/dashboard/product/product_image/form.html:83 templates/dashboard/product/product_variant/form.html:114
+#: templates/dashboard/shipping/form.html:80 templates/dashboard/shipping/list.html:104 templates/dashboard/shipping/methods/form.html:84
+#: templates/dashboard/sites/authorization_keys/form.html:75
 msgctxt "Dashboard update action"
 msgid "Save"
 msgstr "Зберегти"
@@ -5399,8 +5398,7 @@ msgstr ""
 
 #: templates/dashboard/taxes/form.html:112
 msgctxt "Taxes help text"
-msgid ""
-"Taxes are charged according to the rates applicable in the country to which the order is delivered. For now, only rates in European Union are handled."
+msgid "Taxes are charged according to the rates applicable in the country to which the order is delivered. For now, only rates in European Union are handled."
 msgstr ""
 
 #: templates/dashboard/taxes/list.html:29
@@ -5614,8 +5612,7 @@ msgstr "Дякуємо за ваше <a href=\"%(order_url)s\">замовлен�
 msgctxt "Checkout text"
 msgid "We've sent a confirmation email with details to <span>%(email)s</span>.<br> In case of any problems or questions please contact us."
 msgstr ""
-"Ми відправили Вам лист з підтвердженням на e-mail <span>%(email)s</span>.<br> У разі виникнення будь-яких проблем або питань, будь ласка, зв'яжіться з "
-"нами."
+"Ми відправили Вам лист з підтвердженням на e-mail <span>%(email)s</span>.<br> У разі виникнення будь-яких проблем або питань, будь ласка, зв'яжіться з нами."
 
 #: templates/order/checkout_success.html:29 templates/order/checkout_success_anonymous.html:58
 msgctxt "Checkout secondary action"
@@ -6211,7 +6208,7 @@ msgstr "Кількість"
 #: templates/templated_email/source/partials/_order_lines.mjml:60
 msgctxt "Unit price of a product"
 msgid "Per unit"
-msgstr "Кількість"
+msgstr "Ціна за одиницю"
 
 #: templates/templated_email/source/partials/_order_lines.mjml:61
 msgctxt "Ordered item subtotal (unit price * quantity)"
@@ -6222,8 +6219,8 @@ msgstr "Загалом"
 #, python-format
 msgctxt "Password reset e-mail text"
 msgid ""
-"You're receiving this e-mail because you or someone else has requested a password for your user account at %(domain)s.<br/> It can be safely ignored if "
-"you did not request a password reset. Click the link below to reset your password."
+"You're receiving this e-mail because you or someone else has requested a password for your user account at %(domain)s.<br/> It can be safely ignored if you "
+"did not request a password reset. Click the link below to reset your password."
 msgstr ""
 "Ви отримали цього листа тому що Ви чи хтось інший подав заявку на відновлення паролю %(domain)s.<br/> Якщо Ви не подавали заявки - ігноруйте цей лист. "
 "Натисніть на посилання внизу для скидання паролю."
@@ -6302,3 +6299,18 @@ msgstr "шт."
 msgctxt "Variant"
 msgid "Variant"
 msgstr "Варіант"
+
+#: templates/templated_email/order/confirm_order_manager.email:24 templates/templated_email/source/confirm_order_manager.mjml:28
+msgctxt "Order manager confirmation"
+msgid "Customer note:"
+msgstr "Примітка клієнта:"
+
+#: templates/templated_email/source/confirm_order_manager.mjml:17
+#, python-format
+msgctxt "Order manager confirmation"
+msgid ""
+"We have new order. Below is the list of ordered products. To see payment details please visit: <a href=\"%(order_details_url)s\">"
+"%(order_details_url)s</a>"
+msgstr ""
+"У нас нове замовлення. Нижче наведено список замовлених товарів. Щоб переглянути деталі замовлення, перейдіть за посиланням: <a href="
+"\"%(order_details_url)s\">%(order_details_url)s</a>"

@@ -14,7 +14,7 @@ from ...core.exceptions import InsufficientStock
 from ...core.utils.taxes import get_taxes_for_address
 from ...discount import models as voucher_model
 from ...order import OrderEvents, OrderEventsEmails
-from ...order.emails import send_order_confirmation
+from ...order.emails import send_order_confirmation, send_manager_confirmation
 from ...payment import PaymentError
 from ...payment.utils import gateway_process_payment
 from ...shipping.models import ShippingMethod as ShippingMethodModel
@@ -538,6 +538,7 @@ class CheckoutComplete(BaseMutation):
         checkout.delete()
         order.events.create(type=OrderEvents.PLACED.value)
         send_order_confirmation.delay(order.pk)
+        send_manager_confirmation.delay(order.pk)
         order.events.create(
             type=OrderEvents.EMAIL_SENT.value,
             parameters={
