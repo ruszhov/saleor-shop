@@ -13,9 +13,9 @@
 
 {% block title %}
   {% if product.seo_title %}
-    {{ product.translated.seo_title }}
+    {{ product.translated.seo_title }} | {% trans "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine." context "Main navigation item" %}
   {% else %}
-    {{ product.translated.name }} - {{ block.super }}
+    {{ product.translated.name }} - {{ block.super }} | {% trans "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine." context "Main navigation item" %}
   {% endif %}
 {% endblock %}
 
