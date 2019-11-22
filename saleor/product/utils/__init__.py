@@ -11,6 +11,8 @@ from ...core.utils.taxes import ZERO_TAXED_MONEY, TaxedMoney
 from ..forms import ProductForm
 from .availability import products_with_availability
 
+import random
+
 
 def products_visible_to_user(user):
     # pylint: disable=cyclic-import
@@ -42,7 +44,7 @@ def products_for_homepage(user, homepage_collection):
     products = products_visible_to_user(user)
     products = products.prefetch_related(
         'translations', 'images', 'variants__variant_images__image')
-    products = products.filter(collections=homepage_collection)
+    products = products.filter(collections=homepage_collection).order_by("-updated_at")[:8]
     return products
 
 
