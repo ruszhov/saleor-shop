@@ -224,7 +224,7 @@ class Command(BaseCommand):
                                                 stock = ProductVariant(**stocks_create)
                                                 stock.save()
                                                 display_format = "\nStock, {}, has been created."
-                                                print(display_format.format(stock))
+                                                print(display_format.format(stock.sku))
 
                                             price_update = Product.objects.get(id=id)
                                             price_update.price = Money(price_ov * pln_rate, DEFAULT_CURRENCY)
