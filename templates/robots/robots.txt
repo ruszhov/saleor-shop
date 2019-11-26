@@ -1,0 +1,17 @@
+User-agent: Google
+Disallow: /dashboard/
+Disallow: /graphql/
+Disallow: /login/
+Disallow: /*style-guide*
+Disallow: /*impersonate*
+Disallow: /*manifest*
+Disallow: /*account*
+Disallow: /*feeds*
+Disallow: /*search*
+
+User-agent: *
+Disallow: /
+
+
+
+

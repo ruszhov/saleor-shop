@@ -21,6 +21,8 @@ from .page.urls import urlpatterns as page_urls
 from .product.urls import urlpatterns as product_urls
 from .search.urls import urlpatterns as search_urls
 
+from django.views.generic import TemplateView
+
 handler404 = 'saleor.core.views.handle_404'
 
 non_translatable_urlpatterns = [
@@ -51,6 +53,10 @@ translatable_urlpatterns = [
 
 urlpatterns = non_translatable_urlpatterns + i18n_patterns(
     *translatable_urlpatterns)
+
+urlpatterns += [
+    url(r'^robots\.txt$', TemplateView.as_view(template_name="robots/robots.txt", content_type='text/plain')),
+]
 
 if settings.DEBUG:
     import debug_toolbar
