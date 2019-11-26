@@ -6315,8 +6315,8 @@ msgstr "К списку товаров"
 
 #: templates/base.html:12
 msgctxt "Main navigation item"
-msgid "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine."
-msgstr "Интернет магазин сувенирной продукции. Сувенирная продукция. Магазин сувениров. Рекламное агентство \ "Аквариум \". Рекламное агентство в Львове, Украина."
+msgid "Online souvenir shop. Souvenir products. Souvenirs.  Gifts. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine."
+msgstr "Интернет магазин сувениров. Сувенирная продукция. Сувениры. Подарки. Подарочный магазин. \ "Аквариум \", рекламное агентство. Рекламное агентство во Львове, Украина."
 
 #: templates/base.html:58
 msgctxt "Main navigation item"

@@ -6223,8 +6223,8 @@ msgstr "Do listy stronicowanych"
 
 #: templates/base.html:12
 msgctxt "Main navigation item"
-msgid "Online souvenir shop. Souvenir products. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine."
-msgstr "Internetowy sklep z pamiątkami. Produkty z pamiątkami. Sklep z pamiątkami. Agencja reklamowa \"Akwarium\". Agencja reklamowa we Lwowie, Ukraina."
+msgid "Online souvenir shop. Souvenir products. Souvenirs.  Gifts. Gift shop. \"Akvarium\" Advertising Agency. Advertising agency in Lviv, Ukraine."
+msgstr "Internetowy sklep z pamiątkami. Produkty z pamiątkami. Pamiątki Prezenty Sklep z prezentami. Agencja reklamowa \"Akvarium\". Agencja reklamowa we Lwowie na Ukrainie."
 
 #: templates/base.html:58
 msgctxt "Main navigation item"
