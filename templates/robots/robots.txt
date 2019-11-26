@@ -1,4 +1,4 @@
-User-agent: Google
+User-agent: *
 Disallow: /dashboard/
 Disallow: /graphql/
 Disallow: /login/
@@ -9,7 +9,46 @@ Disallow: /*account*
 Disallow: /*feeds*
 Disallow: /*search*
 
-User-agent: *
+Host: https://shop.akvarium.pro
+Sitemap: https://shop.akvarium.pro/sitemap.xml
+
+User-agent: Webalta
+Disallow: /
+
+User-agent: twiceler
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: YandexAdNet
+Disallow: /
+
+User-agent: grapeshot
+Disallow: /
+
+User-agent: Mail.Ru
+Disallow: /
+
+User-agent: MSNBot/Bingbot
+Disallow: /
+
+User-agent: bingbot
+Disallow: /
+
+User-agent: msnbot
+Disallow: /
+
+User-agent: Yahoo
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Mediapartners-Google
+Disallow: /
+
+User-agent: AhrefsBot
 Disallow: /
 
 
