@@ -13,6 +13,9 @@ from django.utils import translation
 def has_cyrillic(text):
     return bool(re.search('[а-яА-Я]', text))
 
+def num_there(s):
+    return any(i.isdigit() for i in s)
+
 def search(phrase):
     """Return matching products for storefront views.
 
@@ -33,10 +36,10 @@ def search(phrase):
     lang = translation.get_language()
 
     vector = SearchVector('translations__name', weight='A') + \
-             SearchVector('translations__language_code', weight='C') + \
-             SearchVector('translations__description', wheight='B')
+             SearchVector('translations__description', wheight='B') +\
+             SearchVector('translations__language_code', weight='C')
 
-    if phrase.isalpha():
+    if not num_there(phrase):
         if has_cyrillic(phrase) is True:
             return Product.objects.annotate(search=vector).filter(search=SearchQuery(lang) & SearchQuery(phrase))
         else:
