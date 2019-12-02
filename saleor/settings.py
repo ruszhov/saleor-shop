@@ -25,7 +25,7 @@ def get_bool_from_env(name, default_value):
     return default_value
 
 
-DEBUG = get_bool_from_env('DEBUG', False)
+DEBUG = get_bool_from_env('DEBUG', True)
 
 SITE_ID = 1
 
@@ -105,8 +105,7 @@ USE_L10N = True
 USE_TZ = True
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
-
-EMAIL_URL = os.environ.get('EMAIL_URL', 'smtp://shop@akvarium.pro:JZYnV8sVeVdn3RQr@smtp.gmail.com:465/?ssl=True')
+EMAIL_URL = os.environ.get('EMAIL_URL', 'smtp://shop@akvarium.pro:beLLGpfu2GHMEyHh@smtp.gmail.com:465/?ssl=True')
 SENDGRID_USERNAME = os.environ.get('SENDGRID_USERNAME', 'admin@akvarium.pro')
 SENDGRID_PASSWORD = os.environ.get('SENDGRID_PASSWORD', 'gfhjkm88hsdyz')
 if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
@@ -130,6 +129,7 @@ ENABLE_SSL = get_bool_from_env('ENABLE_SSL', True)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 ORDER_FROM_EMAIL = os.getenv('ORDER_FROM_EMAIL', DEFAULT_FROM_EMAIL)
+MANAGERS_EMAIL = 'admin@akvarium.pro', 'shop@akvarium.pro'
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')
@@ -370,7 +370,7 @@ bootstrap4 = {
 TEST_RUNNER = 'tests.runner.PytestTestRunner'
 
 ALLOWED_HOSTS = get_list(
-    os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,206.81.31.170,shop.akvarium.pro,www.shop.akvarium.pro'))
+    os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1'))
 ALLOWED_GRAPHQL_ORIGINS = os.environ.get('ALLOWED_GRAPHQL_ORIGINS', '*')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
