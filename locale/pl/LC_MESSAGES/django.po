@@ -5483,6 +5483,11 @@ msgctxt "Homepage title"
 msgid "For Office"
 msgstr "Dla biura"
 
+#: templates/home.html:14
+msgctxt "Homepage title"
+msgid "Christmas Gifts"
+msgstr "Prezenty świąteczne"
+
 #: templates/home.html:15 templates/home.html:30 templates/home.html:42
 msgctxt "Homepage action"
 msgid "Shop now"

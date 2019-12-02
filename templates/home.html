@@ -11,8 +11,12 @@
               <div class="home--content-inner">
 {#                <h1>{% trans "Promo & Sale" context "Homepage title" %}</h1>#}
 {#                <h2>{% trans "from the Northpole" context "Homepage title" %}</h2>#}
-                <h1>{% trans "For Office" context "Homepage title" %}</h1>
-                  <a class="btn btn-secondary home__button" href="{% url 'product:category' slug='office' category_id=25 %}">
+{#                <h1>{% trans "For Office" context "Homepage title" %}</h1>#}
+{#                  <a class="btn btn-secondary home__button" href="{% url 'product:category' slug='office' category_id=25 %}">#}
+{#                    {% trans "Shop now" context "Homepage action" %}#}
+{#                  </a>#}
+                <h1>{% trans "Christmas Gifts" context "Homepage title" %}</h1>
+                  <a class="btn btn-secondary home__button" href="{% url 'product:category' slug='christmas-gifts' category_id=1699 %}">
                     {% trans "Shop now" context "Homepage action" %}
                   </a>
               </div>
