@@ -19,7 +19,7 @@ class ProductSitemap(I18nSitemap):
 class CategorySitemap(I18nSitemap):
 
     def items(self):
-        categories = Category.objects.all().order_by('id')
+        categories = Category.objects.all().order_by('id').exclude(id__in=[1, 174])
         return categories.only('id', 'name', 'slug')
 
 

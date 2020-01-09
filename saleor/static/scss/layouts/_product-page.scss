@@ -37,6 +37,13 @@
     label {
       margin-bottom: $global-margin;
     }
+    &__variant-picker{
+      margin-bottom: $global-margin;
+    }
+    select{
+      padding: $global-padding;
+      width: 100%;
+    }
     &__quantity {
       width: 17%;
       float: left;
